@@ -2,11 +2,11 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boston Bluestone — No Bullshit Growth Concept</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Boston Bluestone — Speed, Reliability & Revenue Concept</title>
   <meta name="robots" content="noindex, nofollow" />
 
-  <!-- Fonts: Space Mono & JetBrains Mono / Inter -->
+  <!-- Fonts: Space Mono & JetBrains Mono / Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet" />
@@ -24,6 +24,7 @@
           colors: {
             neon: '#E2F952',
             brandblack: '#0A0A0A',
+            brandstone: '#FAF9F5',
           },
           boxShadow: {
             'brutal-sm': '2px 2px 0px 0px rgba(0,0,0,1)',
@@ -47,6 +48,10 @@
       color: #0A0A0A;
       font-family: 'JetBrains Mono', ui-monospace, monospace;
       -webkit-font-smoothing: antialiased;
+      padding-bottom: 72px; /* space for mobile bottom bar */
+    }
+    @media (min-width: 768px) {
+      body { padding-bottom: 0px; }
     }
     @keyframes marquee {
       0% { transform: translateX(0%); }
@@ -55,116 +60,145 @@
     .animate-marquee {
       display: flex;
       width: max-content;
-      animation: marquee 28s linear infinite;
+      animation: marquee 26s linear infinite;
     }
     .animate-marquee:hover {
       animation-play-state: paused;
     }
+    /* Touch target utilities */
+    button, a { -webkit-tap-highlight-color: transparent; }
   </style>
 </head>
 <body class="selection:bg-neon selection:text-black font-mono">
 
   <!-- ── STICKY TOP TICKER & NAV ── -->
-  <header class="sticky top-0 z-50 bg-white border-b-2 border-black">
+  <header class="sticky top-0 z-40 bg-white border-b-2 border-black">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <a href="#top" class="font-extrabold text-sm tracking-tight flex items-center gap-2">
+        <a href="#top" class="font-extrabold text-xs sm:text-sm tracking-tight flex items-center gap-2">
           <span class="w-6 h-6 bg-neon border-2 border-black flex items-center justify-center font-black text-xs shadow-brutal-sm">BB</span>
-          <span>BOSTON BLUESTONE</span>
+          <span class="font-display font-black">BOSTON BLUESTONE</span>
         </a>
-        <span class="hidden sm:inline-block bg-black text-white text-[10px] font-extrabold px-2 py-0.5 uppercase tracking-wider">
-          SITE AUDIT & CONCEPT
+        <span class="hidden lg:inline-block bg-black text-white text-[10px] font-extrabold px-2 py-0.5 uppercase tracking-wider">
+          CONCEPT · STOUGHTON, MA
         </span>
       </div>
 
       <div class="hidden md:flex items-center gap-4 text-xs font-bold uppercase tracking-wider">
-        <a href="#leaks" class="hover:underline">The 3 Leaks</a>
-        <a href="#demo" class="hover:underline">Live Demo</a>
-        <a href="#audit" class="hover:underline">Google Fixes</a>
+        <a href="#pillars" class="hover:underline">Core Edge</a>
+        <a href="#contrast" class="hover:underline">The $6.5k Leak</a>
+        <a href="#demo" class="hover:underline">Interactive Demo</a>
         <a href="#pricing" class="bg-neon px-3 py-1 border-2 border-black shadow-brutal-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all">
           Pricing ($750 / $1,400)
         </a>
       </div>
 
       <a href="#pricing" class="md:hidden text-[11px] font-black bg-neon px-3 py-1 border-2 border-black shadow-brutal-sm">
-        OPTIONS →
+        SEE OPTIONS →
       </a>
     </div>
   </header>
 
-  <!-- ── HERO SECTION ── -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-16" id="top">
+  <!-- ── HERO SECTION (MOBILE FIRST, VISUAL METRICS) ── -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-14 pb-12 sm:pb-16" id="top">
     <div class="flex flex-col items-center text-center space-y-6">
-      <!-- Animated Pill Badge -->
-      <div class="inline-flex items-center gap-2 border-2 border-black bg-white px-3.5 py-1 text-[11px] font-extrabold uppercase tracking-widest shadow-brutal-sm">
+      
+      <!-- Top Animated Pill Badge -->
+      <div class="inline-flex items-center gap-2 border-2 border-black bg-white px-3 py-1 text-[10px] sm:text-xs font-extrabold uppercase tracking-widest shadow-brutal-sm">
         <span class="w-2.5 h-2.5 rounded-full bg-neon border border-black animate-pulse"></span>
-        <span>PREPARED FOR BOSTON BLUESTONE · STOUGHTON, MA</span>
+        <span>PREPARED FOR BOSTON BLUESTONE</span>
         <span class="text-stone-300">•</span>
         <span class="text-stone-600">BY MANDER.TECH</span>
       </div>
 
-      <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-black leading-[0.98] uppercase max-w-4xl select-none font-display">
+      <!-- Main Brutalist Headline -->
+      <h1 class="text-3xl sm:text-6xl md:text-7xl font-black tracking-tight text-black leading-[1.02] uppercase max-w-4xl font-display">
         YOU FABRICATE GREAT STONE. <br />
         <span class="bg-neon px-3 py-1 border-2 border-black inline-block mt-2 shadow-brutal rotate-[-0.5deg]">
           YOUR SITE LEAKS ESTIMATES.
         </span>
       </h1>
 
-      <p class="text-stone-700 text-sm sm:text-base max-w-2xl leading-relaxed pt-2">
-        A homeowner comparing stone fabricators in Canton, Sharon, or Milton looks at 3 sites in an evening.
-        When they can&apos;t compare materials, see how fast you install, or tap a button to get a quote — <strong>they call someone else first</strong>.
+      <!-- Visual 3 Core Pillars Bar (Speed, Money, Reliability) -->
+      <p class="text-stone-700 text-xs sm:text-sm max-w-2xl leading-relaxed pt-1">
+        Homeowners in Canton, Sharon, and Milton compare 3 fabricators in an evening.
+        Here is how we turn your site into a high-converting machine built on <strong>Speed</strong>, <strong>Money Making</strong>, and <strong>Reliability</strong>.
       </p>
 
-      <!-- The Reassurance Banner -->
-      <div class="w-full max-w-2xl bg-white border-2 border-black p-4 shadow-brutal text-left text-xs sm:text-sm space-y-1">
-        <div class="font-extrabold uppercase text-stone-900 flex items-center gap-2">
-          <span>⚡</span>
-          <span>NO FORCED REDESIGN. TWO SIMPLE OPTIONS:</span>
+      <!-- 3 Key Metric Badges -->
+      <div class="w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-left">
+        <div class="border-2 border-black bg-white p-3.5 shadow-brutal-sm flex items-center gap-3">
+          <div class="w-10 h-10 bg-neon border-2 border-black flex items-center justify-center font-black text-lg shrink-0">
+            ⚡
+          </div>
+          <div>
+            <div class="text-[10px] uppercase font-black text-stone-500">PILLAR #1</div>
+            <div class="text-xs font-black uppercase text-black font-display">2-Week Turnaround</div>
+            <div class="text-[10px] text-stone-600">48-hr laser to 1-day install</div>
+          </div>
         </div>
-        <p class="text-stone-600 leading-normal">
-          We can plug these 3 interactive additions directly into your existing WordPress site for <strong>$750</strong> (2 wks) — or do a complete website redesign for <strong>$1,400</strong> (4 wks).
-        </p>
+
+        <div class="border-2 border-black bg-white p-3.5 shadow-brutal-sm flex items-center gap-3">
+          <div class="w-10 h-10 bg-neon border-2 border-black flex items-center justify-center font-black text-lg shrink-0">
+            💰
+          </div>
+          <div>
+            <div class="text-[10px] uppercase font-black text-stone-500">PILLAR #2</div>
+            <div class="text-xs font-black uppercase text-black font-display">+$148k Revenue Edge</div>
+            <div class="text-[10px] text-stone-600">Saving just 2 jobs/mo ($6.2k avg)</div>
+          </div>
+        </div>
+
+        <div class="border-2 border-black bg-white p-3.5 shadow-brutal-sm flex items-center gap-3">
+          <div class="w-10 h-10 bg-neon border-2 border-black flex items-center justify-center font-black text-lg shrink-0">
+            🛡️
+          </div>
+          <div>
+            <div class="text-[10px] uppercase font-black text-stone-500">PILLAR #3</div>
+            <div class="text-xs font-black uppercase text-black font-display">In-House + Plumber</div>
+            <div class="text-[10px] text-stone-600">No sub roulette, sink swap done</div>
+          </div>
+        </div>
       </div>
 
       <!-- Quick Action Jump Buttons -->
-      <div class="flex flex-wrap items-center justify-center gap-3 pt-4">
-        <a href="#demo" class="inline-flex items-center gap-2 bg-black text-white px-6 py-3 text-xs uppercase font-extrabold tracking-wider border-2 border-black shadow-brutal hover:bg-neon hover:text-black transition-all">
-          <span>Test Interactive Demo Below ↓</span>
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <a href="#contrast" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black text-white px-6 py-3 text-xs uppercase font-extrabold tracking-wider border-2 border-black shadow-brutal hover:bg-neon hover:text-black transition-all">
+          <span>See The $6,500 Leak Point ↓</span>
         </a>
-        <a href="#pricing" class="inline-flex items-center gap-2 bg-white text-black px-6 py-3 text-xs uppercase font-extrabold tracking-wider border-2 border-black shadow-brutal hover:bg-stone-100 transition-all">
-          <span>See Pricing & Turnarounds →</span>
+        <a href="#pricing" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-black px-6 py-3 text-xs uppercase font-extrabold tracking-wider border-2 border-black shadow-brutal hover:bg-stone-100 transition-all">
+          <span>Pricing ($750 / $1,400) →</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ── CONTINUOUS ANIMATED MARQUEE ── -->
+  <!-- ── CONTINUOUS ANIMATED MARQUEE BANNER ── -->
   <div class="w-full bg-neon border-y-2 border-black py-2.5 overflow-hidden font-mono select-none">
     <div class="animate-marquee flex items-center gap-8 text-black font-black text-xs uppercase tracking-widest">
-      <span>100% IN-HOUSE FABRICATION</span>
+      <span>⚡ SPEED: 2-WEEK TEMPLATE-TO-INSTALL</span>
+      <span class="w-2 h-2 rounded-full bg-black"></span>
+      <span>💰 MONEY: +$148K SAVED IN ESTIMATE LEAKS</span>
+      <span class="w-2 h-2 rounded-full bg-black"></span>
+      <span>🛡️ RELIABILITY: 100% IN-HOUSE SHOP · ZERO SUBS</span>
       <span class="w-2 h-2 rounded-full bg-black"></span>
       <span>HARVARD UNIVERSITY CREDENTIALS</span>
       <span class="w-2 h-2 rounded-full bg-black"></span>
       <span>THE RITZ-CARLTON & MANDARIN ORIENTAL</span>
-      <span class="w-2 h-2 rounded-full bg-black"></span>
-      <span>48-HR DIGITAL LASER TEMPLATING</span>
-      <span class="w-2 h-2 rounded-full bg-black"></span>
-      <span>2-WEEK TEMPLATE-TO-INSTALL</span>
       <span class="w-2 h-2 rounded-full bg-black"></span>
       <span>IN-HOUSE SINK PLUMBER SWAP</span>
       <span class="w-2 h-2 rounded-full bg-black"></span>
       <span>199 TURNPIKE ST · STOUGHTON, MA</span>
       <span class="w-2 h-2 rounded-full bg-black"></span>
-      <span>100% IN-HOUSE FABRICATION</span>
+      <span>⚡ SPEED: 2-WEEK TEMPLATE-TO-INSTALL</span>
+      <span class="w-2 h-2 rounded-full bg-black"></span>
+      <span>💰 MONEY: +$148K SAVED IN ESTIMATE LEAKS</span>
+      <span class="w-2 h-2 rounded-full bg-black"></span>
+      <span>🛡️ RELIABILITY: 100% IN-HOUSE SHOP · ZERO SUBS</span>
       <span class="w-2 h-2 rounded-full bg-black"></span>
       <span>HARVARD UNIVERSITY CREDENTIALS</span>
       <span class="w-2 h-2 rounded-full bg-black"></span>
       <span>THE RITZ-CARLTON & MANDARIN ORIENTAL</span>
-      <span class="w-2 h-2 rounded-full bg-black"></span>
-      <span>48-HR DIGITAL LASER TEMPLATING</span>
-      <span class="w-2 h-2 rounded-full bg-black"></span>
-      <span>2-WEEK TEMPLATE-TO-INSTALL</span>
       <span class="w-2 h-2 rounded-full bg-black"></span>
       <span>IN-HOUSE SINK PLUMBER SWAP</span>
       <span class="w-2 h-2 rounded-full bg-black"></span>
@@ -173,120 +207,401 @@
     </div>
   </div>
 
-  <!-- ── SECTION: THE CURRENT SITE NIGHTMARE VS THE ENGINE ── -->
-  <section class="border-y-2 border-black bg-brandblack text-white py-16 px-4 sm:px-6" id="leaks">
-    <div class="max-w-6xl mx-auto space-y-10">
-      <div class="space-y-3">
-        <div class="inline-block bg-neon text-black px-2.5 py-0.5 text-[11px] uppercase font-black tracking-widest border border-black">
-          REAL AUDIT FINDINGS
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white font-display">
-          WHAT HOMEOWNERS HIT RIGHT NOW
-        </h2>
-        <p class="text-stone-400 text-xs sm:text-sm max-w-2xl leading-relaxed">
-          We audited <strong>bostonbluestone.com</strong>. Here are the 3 big leak points holding back your incoming estimates:
-        </p>
-      </div>
-
-      <!-- 3 Leak Cards with Screenshots -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Leak 1 -->
-        <div class="border-2 border-stone-800 bg-stone-950 p-5 flex flex-col justify-between space-y-4">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between border-b border-stone-800 pb-2">
-              <span class="text-xs uppercase font-black text-rose-400">LEAK #1 · CONTACT PAGE</span>
-              <span class="bg-rose-500/20 text-rose-300 text-[10px] font-bold px-2 py-0.5">0 FORMS</span>
-            </div>
-            <div class="border border-stone-800 rounded overflow-hidden">
-              <img src="screenshot-contact.jpg" alt="Contact page leak" class="w-full h-36 object-cover object-top" />
-            </div>
-            <h3 class="text-base font-bold text-white uppercase">The Fake Business Card</h3>
-            <p class="text-xs text-stone-400 leading-relaxed">
-              Your Contact page has zero forms. It shows an AI picture of a business card where phone and email can't even be clicked — and then bounces visitors to an external quoting app.
-            </p>
-          </div>
-          <div class="p-3 bg-stone-900 border border-stone-800 text-[11px] text-stone-300">
-            <strong class="text-neon">What We Do:</strong> Embed a 45-second on-page estimate form with photo upload right on your site.
-          </div>
-        </div>
-
-        <!-- Leak 2 -->
-        <div class="border-2 border-stone-800 bg-stone-950 p-5 flex flex-col justify-between space-y-4">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between border-b border-stone-800 pb-2">
-              <span class="text-xs uppercase font-black text-amber-400">LEAK #2 · HOMEPAGE</span>
-              <span class="bg-amber-500/20 text-amber-300 text-[10px] font-bold px-2 py-0.5">BURIED PROOF</span>
-            </div>
-            <div class="border border-stone-800 rounded overflow-hidden">
-              <img src="screenshot-homepage.jpg" alt="Homepage hero leak" class="w-full h-36 object-cover object-top" />
-            </div>
-            <h3 class="text-base font-bold text-white uppercase">Buried Trust Signals</h3>
-            <p class="text-xs text-stone-400 leading-relaxed">
-              You've done stone for <strong>Harvard, The Ritz-Carlton & Mandarin Oriental</strong>, and your reviews praise your <strong>partner plumber for sink swaps</strong>. None of it is on the homepage.
-            </p>
-          </div>
-          <div class="p-3 bg-stone-900 border border-stone-800 text-[11px] text-stone-300">
-            <strong class="text-neon">What We Do:</strong> Add a 2-Week Timeline & Warranty highlighting your in-house shop & plumber perk.
-          </div>
-        </div>
-
-        <!-- Leak 3 -->
-        <div class="border-2 border-stone-800 bg-stone-950 p-5 flex flex-col justify-between space-y-4">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between border-b border-stone-800 pb-2">
-              <span class="text-xs uppercase font-black text-rose-400">LEAK #3 · MOBILE & GOOGLE</span>
-              <span class="bg-rose-500/20 text-rose-300 text-[10px] font-bold px-2 py-0.5">HIDDEN URL</span>
-            </div>
-            <div class="border border-stone-800 rounded overflow-hidden">
-              <img src="screenshot-mobile.jpg" alt="Mobile layout bug" class="w-full h-36 object-cover object-top" />
-            </div>
-            <h3 class="text-base font-bold text-white uppercase">Gallery Hidden from Google</h3>
-            <p class="text-xs text-stone-400 leading-relaxed">
-              A broken canonical tag drops your entire 80-photo Gallery from Google sitemaps. Plus, 20 South Shore town pages have zero links pointing to them.
-            </p>
-          </div>
-          <div class="p-3 bg-stone-900 border border-stone-800 text-[11px] text-stone-300">
-            <strong class="text-neon">What We Do:</strong> Fix the Gallery canonical URL and link all 20 town pages cleanly in the footer.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── INTERACTIVE DEMO (THE SIMULATOR) ── -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16" id="demo">
-    <div class="space-y-3 mb-10">
+  <!-- ── SECTION: THE 3 CORE SELLING PILLARS (SPEED, MONEY, RELIABILITY) ── -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-14" id="pillars">
+    <div class="space-y-3 mb-10 text-center sm:text-left">
       <div class="inline-block bg-black text-white px-2.5 py-0.5 text-[11px] uppercase font-black tracking-widest">
-        THE 3 CONCRETE ADDITIONS
+        WHY HOMEOWNERS PICK YOU OR LEAVE
       </div>
       <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-black font-display">
-        INTERACTIVE LIVE PROTOTYPE
+        THE 3 RULES OF LOCAL STONE SALES
       </h2>
       <p class="text-stone-600 text-xs sm:text-sm max-w-xl">
-        Click the tabs below to test the three modules we'd add to your website.
+        Countertops are high-ticket purchases ($4,500 – $12,000). Every element on your website must answer these three questions immediately:
       </p>
     </div>
 
-    <!-- Interactive Navigation Tabs -->
-    <div class="flex flex-wrap gap-2 mb-6">
-      <button onclick="switchTab('tab-guide', this)" class="tab-btn px-4 py-2.5 text-xs font-black uppercase border-2 border-black bg-neon shadow-brutal-sm">
-        01 · Material Guide
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- PILLAR 1: SPEED -->
+      <div class="border-2 border-black bg-white p-6 shadow-brutal flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between border-b-2 border-black pb-3">
+            <span class="text-xs font-black uppercase bg-black text-white px-2 py-0.5">PILLAR 01</span>
+            <span class="text-xs font-black text-black">⚡ SPEED</span>
+          </div>
+          <h3 class="text-xl font-black uppercase font-display text-black">
+            "How Fast Can You Get These Installed?"
+          </h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Homeowners dread having a kitchen without counters for 6 weeks. Big-box stores take 6 to 8 weeks. You do it in <strong>2 weeks flat</strong> with digital laser templating in 48 hours.
+          </p>
+          <div class="space-y-2 pt-2 text-xs">
+            <div class="p-2 border border-black bg-stone-50 flex items-center gap-2">
+              <span class="text-rose-600 font-black">✕</span>
+              <span><strong>Current Site:</strong> Timeline is never mentioned.</span>
+            </div>
+            <div class="p-2 border border-black bg-neon/30 flex items-center gap-2 font-bold">
+              <span class="text-black font-black">✓</span>
+              <span><strong>What We Add:</strong> Interactive 4-step timeline module.</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 pt-3 border-t-2 border-black text-[11px] font-black uppercase text-stone-700">
+          Result: Destroys Big-Box Competitors
+        </div>
+      </div>
+
+      <!-- PILLAR 2: MONEY MAKING -->
+      <div class="border-2 border-black bg-white p-6 shadow-brutal flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between border-b-2 border-black pb-3">
+            <span class="text-xs font-black uppercase bg-black text-white px-2 py-0.5">PILLAR 02</span>
+            <span class="text-xs font-black text-black">💰 MONEY MAKING</span>
+          </div>
+          <h3 class="text-xl font-black uppercase font-display text-black">
+            "Give Me A Quote Tonight In 45 Seconds"
+          </h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            A homeowner on their sofa at 9 PM won't download an external app or call tomorrow morning. If they can't get an estimate in 45 seconds, <strong>they bounce to a Canton shop</strong>.
+          </p>
+          <div class="space-y-2 pt-2 text-xs">
+            <div class="p-2 border border-black bg-stone-50 flex items-center gap-2">
+              <span class="text-rose-600 font-black">✕</span>
+              <span><strong>Current Site:</strong> Unclickable business card image.</span>
+            </div>
+            <div class="p-2 border border-black bg-neon/30 flex items-center gap-2 font-bold">
+              <span class="text-black font-black">✓</span>
+              <span><strong>What We Add:</strong> 45-second slider estimate form.</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 pt-3 border-t-2 border-black text-[11px] font-black uppercase text-stone-700">
+          Result: +$12k–$30k/mo in Captured Slabs
+        </div>
+      </div>
+
+      <!-- PILLAR 3: RELIABILITY -->
+      <div class="border-2 border-black bg-white p-6 shadow-brutal flex flex-col justify-between">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between border-b-2 border-black pb-3">
+            <span class="text-xs font-black uppercase bg-black text-white px-2 py-0.5">PILLAR 03</span>
+            <span class="text-xs font-black text-black">🛡️ RELIABILITY</span>
+          </div>
+          <h3 class="text-xl font-black uppercase font-display text-black">
+            "Will I Get Scammed By Subcontractors?"
+          </h3>
+          <p class="text-xs text-stone-600 leading-relaxed">
+            Brokers outsource cutting to mystery yards. You fabricate 100% in-house at <strong>199 Turnpike St.</strong>, have Harvard/Ritz credentials, and provide a <strong>partner plumber for the sink</strong>.
+          </p>
+          <div class="space-y-2 pt-2 text-xs">
+            <div class="p-2 border border-black bg-stone-50 flex items-center gap-2">
+              <span class="text-rose-600 font-black">✕</span>
+              <span><strong>Current Site:</strong> Commercial trust signals buried.</span>
+            </div>
+            <div class="p-2 border border-black bg-neon/30 flex items-center gap-2 font-bold">
+              <span class="text-black font-black">✓</span>
+              <span><strong>What We Add:</strong> Prominent trust badges & plumber perk.</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 pt-3 border-t-2 border-black text-[11px] font-black uppercase text-stone-700">
+          Result: 100% Peace of Mind for Buyer
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SECTION: VISUAL CONTRAST (THE $6,500 LEAK VS THE ENGINE) ── -->
+  <section class="border-y-2 border-black bg-brandblack text-white py-16 px-4 sm:px-6" id="contrast">
+    <div class="max-w-6xl mx-auto space-y-10">
+      
+      <div class="text-center sm:text-left space-y-3">
+        <div class="inline-block bg-neon text-black px-2.5 py-0.5 text-[11px] uppercase font-black tracking-widest border border-black">
+          A TALE OF TWO VISITING HOMEOWNERS
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white font-display">
+          WHERE $6,500 DISAPPEARS RIGHT NOW
+        </h2>
+        <p class="text-stone-400 text-xs sm:text-sm max-w-2xl leading-relaxed">
+          One of these screens is live on your website today. The other is the lead generator we plug in.
+        </p>
+      </div>
+
+      <!-- Contrast Cards Grid (Modeled after iapplyforjobsforyou PhotoContrastSection) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        
+        <!-- LEFT: THE CURRENT LEAK (Dark & Red) -->
+        <div class="border-2 border-stone-800 bg-stone-950 p-6 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            
+            <!-- Header Stamp -->
+            <div class="flex items-center justify-between border-b border-stone-800 pb-3">
+              <div class="inline-flex items-center gap-1.5 bg-rose-600 text-white font-black text-xs px-3 py-1 uppercase border border-black shadow-brutal-sm">
+                <span>✕</span>
+                <span>CURRENT SITE · THE LEAK POINT</span>
+              </div>
+              <span class="text-[10px] text-stone-400 font-mono">bostonbluestone.com/contact/</span>
+            </div>
+
+            <!-- Screenshot of the actual contact leak -->
+            <div class="border-2 border-stone-800 overflow-hidden relative group">
+              <img src="screenshot-contact.jpg" alt="Actual Contact Page with AI business card" class="w-full h-48 sm:h-56 object-cover object-top" />
+              <div class="absolute bottom-2 left-2 bg-black/90 text-rose-300 text-[10px] font-bold px-2 py-1 border border-rose-900">
+                ⚠️ 0 web forms · Phone number is unclickable picture
+              </div>
+            </div>
+
+            <h3 class="text-xl font-black uppercase text-rose-400 font-display">
+              Homeowner Taps Out & Calls Someone Else
+            </h3>
+
+            <!-- Step by Step Breakdown -->
+            <ul class="space-y-2.5 text-xs text-stone-300">
+              <li class="flex items-start gap-2">
+                <span class="text-rose-500 font-black">1.</span>
+                <span>Homeowner in Sharon looks for quartz kitchen countertops ($6,500 project).</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-rose-500 font-black">2.</span>
+                <span>Hits your Contact page and sees an AI generated picture of a business card.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-rose-500 font-black">3.</span>
+                <span>Tries to tap the phone number — nothing happens because it's just pixels.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-rose-500 font-black">4.</span>
+                <span>Bounces to Google and calls a fabricator in Norwood or Canton instead.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Loss Metric Banner -->
+          <div class="p-4 bg-rose-950/60 border border-rose-800 text-xs text-rose-200 font-bold flex items-center justify-between">
+            <span>FINANCIAL OUTCOME:</span>
+            <span class="text-rose-400 font-black text-sm">-$6,500 LOST TO COMPETITOR</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: THE NEW ENGINE (Neon & High Contrast) -->
+        <div class="border-2 border-neon bg-stone-900 p-6 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            
+            <!-- Header Stamp -->
+            <div class="flex items-center justify-between border-b border-stone-800 pb-3">
+              <div class="inline-flex items-center gap-1.5 bg-neon text-black font-black text-xs px-3 py-1 uppercase border border-black shadow-brutal-sm">
+                <span>✓</span>
+                <span>THE ADDITION · THE MONEY MAKER</span>
+              </div>
+              <span class="text-[10px] text-neon font-mono">45-Sec Estimate Builder</span>
+            </div>
+
+            <!-- Visual Form Preview Mockup -->
+            <div class="border-2 border-black bg-white text-black p-4 space-y-3">
+              <div class="flex justify-between items-center text-[10px] font-black uppercase text-stone-500 border-b border-stone-200 pb-1">
+                <span>Interactive Mobile Widget</span>
+                <span class="bg-neon px-1.5 py-0.5 text-black">TEST BELOW ↓</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div class="bg-neon p-2 font-black border border-black text-center">Kitchen [Selected]</div>
+                <div class="bg-stone-100 p-2 font-bold border border-stone-300 text-center text-stone-600">Vanity</div>
+              </div>
+              <div class="bg-stone-100 p-2 text-xs flex justify-between font-bold border border-stone-200">
+                <span>Quartzite · 24 LF (~48 sq.ft)</span>
+                <span class="text-emerald-700">✓ In-House Plumber Added</span>
+              </div>
+            </div>
+
+            <h3 class="text-xl font-black uppercase text-neon font-display">
+              Homeowner Gets Estimate in 45 Seconds
+            </h3>
+
+            <!-- Step by Step Breakdown -->
+            <ul class="space-y-2.5 text-xs text-stone-200">
+              <li class="flex items-start gap-2">
+                <span class="text-neon font-black">1.</span>
+                <span>Homeowner slides to "24 LF", selects Quartzite, and snaps a photo of their old island.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-neon font-black">2.</span>
+                <span>Taps "Request Same-Day Estimate" — takes 45 seconds total.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-neon font-black">3.</span>
+                <span>You receive an instant formatted email with dimensions, material, and photo.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-neon font-black">4.</span>
+                <span>You reply with same-day pricing and lock in the 2-week install schedule.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Profit Metric Banner -->
+          <div class="p-4 bg-neon/20 border border-neon text-xs text-neon font-bold flex items-center justify-between">
+            <span>FINANCIAL OUTCOME:</span>
+            <span class="text-neon font-black text-sm">+$6,500 IN SHOP PIPELINE</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Money Math Box -->
+      <div class="border-2 border-stone-800 bg-black p-6 text-center max-w-3xl mx-auto space-y-2">
+        <div class="text-xs uppercase font-black text-neon tracking-widest">THE SIMPLE ARITHMETIC</div>
+        <p class="text-stone-300 text-xs sm:text-sm">
+          If fixing this leak saves you just <strong>2 kitchen jobs a month</strong> at an average fabrication ticket of $6,200:
+        </p>
+        <div class="text-2xl sm:text-4xl font-black text-white font-display pt-1">
+          2 jobs × $6,200 = <span class="text-neon bg-stone-900 px-2 py-0.5 border border-neon">+$12,400 / Month</span>
+          <span class="block text-sm text-stone-400 font-normal mt-1">(That's $148,800/year in fabrication orders that otherwise bounce)</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SECTION: INTERACTIVE DEMO (TEST THE 3 ADDITIONS) ── -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16" id="demo">
+    <div class="space-y-3 mb-8 text-center sm:text-left">
+      <div class="inline-block bg-black text-white px-2.5 py-0.5 text-[11px] uppercase font-black tracking-widest">
+        LIVE WORKING PROTOTYPE
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-black font-display">
+        TEST THE 3 PLUG-IN MODULES
+      </h2>
+      <p class="text-stone-600 text-xs sm:text-sm max-w-xl">
+        Tap the 3 tabs below to test exactly what homeowners will experience on your website.
+      </p>
+    </div>
+
+    <!-- Mobile-Optimized Tab Switchers -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-6">
+      <button onclick="switchTab('tab-quote', this)" class="tab-btn px-4 py-3 text-xs font-black uppercase border-2 border-black bg-neon shadow-brutal-sm text-left flex items-center justify-between">
+        <span>01 · 45-Sec Estimate</span>
+        <span class="text-[10px] bg-black text-white px-1.5 py-0.5">POPULAR</span>
       </button>
-      <button onclick="switchTab('tab-process', this)" class="tab-btn px-4 py-2.5 text-xs font-black uppercase border-2 border-black bg-white shadow-brutal-sm hover:bg-stone-100">
-        02 · 2-Week Timeline
+      <button onclick="switchTab('tab-guide', this)" class="tab-btn px-4 py-3 text-xs font-black uppercase border-2 border-black bg-white shadow-brutal-sm hover:bg-stone-100 text-left flex items-center justify-between">
+        <span>02 · Stone Guide</span>
+        <span class="text-[10px] text-stone-400 font-normal">3 SLABS</span>
       </button>
-      <button onclick="switchTab('tab-quote', this)" class="tab-btn px-4 py-2.5 text-xs font-black uppercase border-2 border-black bg-white shadow-brutal-sm hover:bg-stone-100">
-        03 · 45-Sec Estimate Builder
+      <button onclick="switchTab('tab-process', this)" class="tab-btn px-4 py-3 text-xs font-black uppercase border-2 border-black bg-white shadow-brutal-sm hover:bg-stone-100 text-left flex items-center justify-between">
+        <span>03 · 2-Wk Timeline</span>
+        <span class="text-[10px] text-stone-400 font-normal">4 STEPS</span>
       </button>
     </div>
 
-    <!-- MODULE 1: Material Comparison Guide -->
-    <div id="tab-guide" class="demo-pane border-2 border-black bg-white p-6 sm:p-8 shadow-brutal">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-black pb-6 mb-6">
+    <!-- MODULE 1: 45-Second Estimate Builder (PRIMARY CONVERSION) -->
+    <div id="tab-quote" class="demo-pane border-2 border-black bg-white p-5 sm:p-8 shadow-brutal">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-black pb-4 mb-6">
         <div>
-          <span class="text-[11px] font-black uppercase text-stone-500">Feature Addition #1</span>
-          <h3 class="text-2xl font-black text-black uppercase font-display">Interactive Stone Comparison Guide</h3>
-          <p class="text-xs text-stone-600 mt-1">Helps homeowners pick the right stone before visiting the Stoughton yard.</p>
+          <span class="text-[10px] font-black uppercase bg-neon text-black px-2 py-0.5 border border-black">FEATURE ADDITION #1</span>
+          <h3 class="text-xl sm:text-2xl font-black text-black uppercase font-display mt-1">45-Second Estimate Builder</h3>
+          <p class="text-xs text-stone-600">Replaces the unclickable card with a frictionless quote generator.</p>
+        </div>
+        <div class="text-xs text-stone-500 font-bold">
+          ⚡ Simulates instant email delivery
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        
+        <!-- Left: What the Homeowner Fills Out -->
+        <div class="border-2 border-black p-5 bg-[#FAF9F5] space-y-4 text-xs">
+          <div class="font-black uppercase text-black flex items-center justify-between">
+            <span>What Homeowner Fills Out:</span>
+            <span class="text-[10px] bg-black text-white px-2 py-0.5">Takes 45 Seconds</span>
+          </div>
+
+          <div>
+            <label class="block font-bold text-stone-700 mb-1">1. Select Room / Project Type</label>
+            <div class="grid grid-cols-2 gap-2">
+              <button type="button" onclick="setSimSpace('Kitchen Countertops', this)" class="sim-btn px-3 py-2 border-2 border-black bg-neon font-black">Kitchen Countertops</button>
+              <button type="button" onclick="setSimSpace('Bathroom Vanity', this)" class="sim-btn px-3 py-2 border-2 border-black bg-white font-bold hover:bg-stone-100">Bathroom Vanity</button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-bold text-stone-700 mb-1">2. Stone Material Interest</label>
+            <select id="simStoneSelect" onchange="syncSim()" class="w-full border-2 border-black p-2 font-mono bg-white text-xs">
+              <option value="Quartzite">Quartzite (Marble look, harder than granite)</option>
+              <option value="Granite">Granite (100% Natural, hot pans direct)</option>
+              <option value="Quartz">Quartz (Zero Maintenance, non-porous)</option>
+              <option value="Soapstone">Soapstone (Classic New England patina)</option>
+            </select>
+          </div>
+
+          <div>
+            <div class="flex justify-between font-bold text-stone-700 mb-1">
+              <span>3. Approximate Size:</span>
+              <span id="simLfLabel" class="bg-black text-white px-2 py-0.5 font-mono text-[11px]">24 Linear Feet (~48 sq.ft)</span>
+            </div>
+            <input type="range" min="10" max="50" value="24" oninput="setSimLf(this.value)" class="w-full accent-black cursor-pointer h-2 bg-stone-300" />
+            <div class="flex justify-between text-[10px] text-stone-500 mt-1">
+              <span>Small Galley (12 LF)</span>
+              <span>Average Kitchen (24 LF)</span>
+              <span>Large Island (40+ LF)</span>
+            </div>
+          </div>
+
+          <div class="p-3 border-2 border-dashed border-black bg-white text-center text-stone-600 font-bold flex items-center justify-center gap-2">
+            <span>📷</span>
+            <span>Attach kitchen photo or rough layout sketch</span>
+          </div>
+
+          <button type="button" onclick="submitEstimateSim(this)" class="w-full py-3.5 bg-black text-white font-black uppercase tracking-wider border-2 border-black hover:bg-neon hover:text-black active:translate-x-0.5 active:translate-y-0.5 transition-all shadow-brutal-sm text-xs">
+            Simulate Submit Estimate →
+          </button>
+        </div>
+
+        <!-- Right: What Lands in Your Email -->
+        <div class="border-2 border-black bg-black text-white p-5 space-y-4">
+          <div class="flex justify-between items-center border-b border-stone-800 pb-2">
+            <span class="text-[11px] font-black uppercase text-neon">WHAT LANDS IN YOUR INBOX:</span>
+            <span class="text-[10px] bg-stone-800 px-2 py-0.5 text-stone-300 font-mono">INSTANT LEAD</span>
+          </div>
+
+          <div class="space-y-2.5 text-xs font-mono">
+            <div class="flex justify-between border-b border-stone-900 pb-1">
+              <span class="text-stone-400">Project Type:</span>
+              <span id="outSpace" class="font-bold text-white">Kitchen Countertops</span>
+            </div>
+            <div class="flex justify-between border-b border-stone-900 pb-1">
+              <span class="text-stone-400">Material Interest:</span>
+              <span id="outStone" class="font-bold text-neon">Quartzite</span>
+            </div>
+            <div class="flex justify-between border-b border-stone-900 pb-1">
+              <span class="text-stone-400">Estimated Footage:</span>
+              <span id="outSize" class="font-bold text-white">24 LF (~48 sq.ft)</span>
+            </div>
+            <div class="flex justify-between border-b border-stone-900 pb-1">
+              <span class="text-stone-400">Plumber Sink Swap:</span>
+              <span class="text-emerald-400 font-bold">Yes (Include partner plumber)</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-stone-400">Lead Status:</span>
+              <span class="text-neon font-black">✓ Ready for Same-Day Pricing</span>
+            </div>
+          </div>
+
+          <div class="p-3 bg-stone-900 border border-stone-800 text-[11px] text-stone-300 space-y-1">
+            <div class="font-black text-neon uppercase">Zero Endless Phone Tag:</div>
+            <p>You open your email, see the exact footage and stone preference, and can fire back an estimate or invite them to the 199 Turnpike St. yard immediately.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MODULE 2: Stone Comparison Guide -->
+    <div id="tab-guide" class="demo-pane hidden border-2 border-black bg-white p-5 sm:p-8 shadow-brutal">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-black pb-4 mb-6">
+        <div>
+          <span class="text-[10px] font-black uppercase bg-neon text-black px-2 py-0.5 border border-black">FEATURE ADDITION #2</span>
+          <h3 class="text-xl sm:text-2xl font-black text-black uppercase font-display mt-1">Interactive Stone Comparison Guide</h3>
+          <p class="text-xs text-stone-600">Filters materials so homeowners arrive informed and ready to buy.</p>
         </div>
 
         <!-- Filter Buttons -->
@@ -299,6 +614,8 @@
 
       <!-- Stone Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="stoneGrid">
+        
+        <!-- Granite -->
         <div class="stone-card border-2 border-black bg-[#FAF9F5] p-4 flex flex-col justify-between" data-cat="all family">
           <div>
             <div class="border-2 border-black overflow-hidden h-40 mb-3 bg-stone-200">
@@ -312,13 +629,14 @@
               100% natural, every slab unique. Takes hot pans directly without scorch marks. Resists knife scratches.
             </p>
           </div>
-          <div class="space-y-1 text-xs border-t-2 border-black pt-3">
-            <div class="flex justify-between"><span>Heat Rating:</span><strong class="text-emerald-700">10/10</strong></div>
+          <div class="space-y-1.5 text-xs border-t-2 border-black pt-3">
+            <div class="flex justify-between"><span>Heat Rating:</span><strong class="text-emerald-700">10/10 (direct pans)</strong></div>
             <div class="flex justify-between"><span>Scratch Proof:</span><strong class="text-emerald-700">9/10</strong></div>
-            <div class="flex justify-between"><span>Care:</span><span>Annual 5-min seal</span></div>
+            <div class="flex justify-between"><span>Maintenance:</span><span>Annual 5-min wipe seal</span></div>
           </div>
         </div>
 
+        <!-- Quartzite -->
         <div class="stone-card border-2 border-black bg-[#FAF9F5] p-4 flex flex-col justify-between" data-cat="all family">
           <div>
             <div class="border-2 border-black overflow-hidden h-40 mb-3 bg-stone-200">
@@ -332,13 +650,14 @@
               True natural stone with the airy veining of marble, but harder than granite. Zero etching from wine or lemons.
             </p>
           </div>
-          <div class="space-y-1 text-xs border-t-2 border-black pt-3">
+          <div class="space-y-1.5 text-xs border-t-2 border-black pt-3">
             <div class="flex justify-between"><span>Heat Rating:</span><strong class="text-emerald-700">10/10</strong></div>
-            <div class="flex justify-between"><span>Scratch Proof:</span><strong class="text-emerald-700">10/10</strong></div>
-            <div class="flex justify-between"><span>Care:</span><span>Annual 5-min seal</span></div>
+            <div class="flex justify-between"><span>Hardness:</span><strong class="text-emerald-700">Harder than Granite</strong></div>
+            <div class="flex justify-between"><span>Aesthetic:</span><span>Marble look, zero etching</span></div>
           </div>
         </div>
 
+        <!-- Quartz -->
         <div class="stone-card border-2 border-black bg-[#FAF9F5] p-4 flex flex-col justify-between" data-cat="all zero family">
           <div>
             <div class="border-2 border-black overflow-hidden h-40 mb-3 bg-stone-200">
@@ -349,31 +668,32 @@
               <span class="text-xs font-black bg-neon px-2 py-0.5 border border-black">$$ · ZERO SEAL</span>
             </div>
             <p class="text-xs text-stone-600 mb-4 leading-relaxed">
-              Engineered stone. Non-porous, completely stain-proof against red wine and coffee. Never needs sealing.
+              Engineered stone. Completely non-porous, 100% stain-proof against red wine, turmeric, and coffee. Never needs sealing.
             </p>
           </div>
-          <div class="space-y-1 text-xs border-t-2 border-black pt-3">
+          <div class="space-y-1.5 text-xs border-t-2 border-black pt-3">
             <div class="flex justify-between"><span>Heat Rating:</span><strong class="text-amber-700">7/10 (use trivet)</strong></div>
             <div class="flex justify-between"><span>Stain Proof:</span><strong class="text-emerald-700">10/10</strong></div>
-            <div class="flex justify-between"><span>Care:</span><span class="font-black text-emerald-700">Zero sealing</span></div>
+            <div class="flex justify-between"><span>Maintenance:</span><span class="font-black text-emerald-700">Zero sealing forever</span></div>
           </div>
         </div>
+
       </div>
     </div>
 
-    <!-- MODULE 2: Timeline & Warranty -->
-    <div id="tab-process" class="demo-pane hidden border-2 border-black bg-white p-6 sm:p-8 shadow-brutal">
-      <div class="border-b-2 border-black pb-6 mb-6">
-        <span class="text-[11px] font-black uppercase text-stone-500">Feature Addition #2</span>
-        <h3 class="text-2xl font-black text-black uppercase font-display">From Template to Install in 2 Weeks</h3>
-        <p class="text-xs text-stone-600 mt-1">4 transparent steps with zero subcontractor guesswork.</p>
+    <!-- MODULE 3: 2-Week Timeline & Plumber Perk -->
+    <div id="tab-process" class="demo-pane hidden border-2 border-black bg-white p-5 sm:p-8 shadow-brutal">
+      <div class="border-b-2 border-black pb-4 mb-6">
+        <span class="text-[10px] font-black uppercase bg-neon text-black px-2 py-0.5 border border-black">FEATURE ADDITION #3</span>
+        <h3 class="text-xl sm:text-2xl font-black text-black uppercase font-display mt-1">From Template to Install in 2 Weeks</h3>
+        <p class="text-xs text-stone-600">Eliminates homeowner fear of weeks without a working kitchen.</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="border-2 border-black p-4 bg-[#FAF9F5]">
           <span class="text-xs font-black bg-black text-white px-2 py-0.5 uppercase">DAY 1</span>
           <h4 class="font-black text-sm mt-2 mb-1 uppercase">Slab Selection</h4>
-          <p class="text-xs text-stone-600">Homeowner visits 199 Turnpike St., inspects full slabs in daylight, and gets a same-day estimate.</p>
+          <p class="text-xs text-stone-600">Homeowner visits 199 Turnpike St., inspects full slabs in daylight, and locks in same-day pricing.</p>
         </div>
 
         <div class="border-2 border-black p-4 bg-[#FAF9F5]">
@@ -385,7 +705,7 @@
         <div class="border-2 border-black p-4 bg-[#FAF9F5]">
           <span class="text-xs font-black bg-black text-white px-2 py-0.5 uppercase">DAYS 5–10</span>
           <h4 class="font-black text-sm mt-2 mb-1 uppercase">Shop Fabrication</h4>
-          <p class="text-xs text-stone-600">Bridge saws, CNC milling, and hand-finished edge profiles done inside your Stoughton facility.</p>
+          <p class="text-xs text-stone-600">Bridge saws, CNC milling, and hand-finished edge profiles done inside your in-house Stoughton facility.</p>
         </div>
 
         <div class="border-2 border-black p-4 bg-neon">
@@ -401,94 +721,10 @@
       </div>
     </div>
 
-    <!-- MODULE 3: 45-Second Estimate Builder -->
-    <div id="tab-quote" class="demo-pane hidden border-2 border-black bg-white p-6 sm:p-8 shadow-brutal">
-      <div class="border-b-2 border-black pb-6 mb-6">
-        <span class="text-[11px] font-black uppercase text-stone-500">Feature Addition #3</span>
-        <h3 class="text-2xl font-black text-black uppercase font-display">45-Second Estimate Builder</h3>
-        <p class="text-xs text-stone-600 mt-1">Replaces the 3-click redirect with an instant quote lead generator.</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        <!-- Form Left -->
-        <div class="border-2 border-black p-5 bg-[#FAF9F5] space-y-4 text-xs">
-          <div class="font-black uppercase text-black">Interactive Form (What the Homeowner Fills Out):</div>
-
-          <div>
-            <label class="block font-bold text-stone-700 mb-1">1. Select Space</label>
-            <div class="grid grid-cols-2 gap-2">
-              <button type="button" onclick="setSimSpace('Kitchen Countertops', this)" class="sim-btn px-3 py-2 border-2 border-black bg-neon font-black">Kitchen Countertops</button>
-              <button type="button" onclick="setSimSpace('Bathroom Vanity', this)" class="sim-btn px-3 py-2 border-2 border-black bg-white font-bold hover:bg-stone-100">Bathroom Vanity</button>
-            </div>
-          </div>
-
-          <div>
-            <label class="block font-bold text-stone-700 mb-1">2. Stone Preference</label>
-            <select id="simStoneSelect" onchange="syncSim()" class="w-full border-2 border-black p-2 font-mono bg-white">
-              <option value="Quartzite">Quartzite (Marble look, harder than granite)</option>
-              <option value="Granite">Granite (Classic Natural)</option>
-              <option value="Quartz">Quartz (Zero Maintenance)</option>
-              <option value="Soapstone">Soapstone</option>
-            </select>
-          </div>
-
-          <div>
-            <div class="flex justify-between font-bold text-stone-700 mb-1">
-              <span>3. Approximate Size:</span>
-              <span id="simLfLabel" class="bg-black text-white px-2 py-0.5">24 Linear Feet (~48 sq.ft)</span>
-            </div>
-            <input type="range" min="10" max="50" value="24" oninput="setSimLf(this.value)" class="w-full accent-black cursor-pointer" />
-          </div>
-
-          <div class="p-3 border-2 border-dashed border-black bg-white text-center text-stone-500 font-bold">
-            📷 Drag & drop kitchen photo or tap to attach
-          </div>
-
-          <button type="button" onclick="submitEstimateSim(this)" class="w-full py-3 bg-black text-white font-black uppercase tracking-wider border-2 border-black hover:bg-neon hover:text-black active:translate-x-0.5 active:translate-y-0.5 transition-all shadow-brutal-sm">
-            Request Estimate →
-          </button>
-        </div>
-
-        <!-- Output Right -->
-        <div class="border-2 border-black bg-black text-white p-5 space-y-4">
-          <div class="flex justify-between items-center border-b border-stone-800 pb-2">
-            <span class="text-[11px] font-black uppercase text-neon">WHAT LANDS IN YOUR INBOX:</span>
-            <span class="text-[10px] bg-stone-800 px-2 py-0.5 text-stone-300">INSTANT EMAIL</span>
-          </div>
-
-          <div class="space-y-2 text-xs font-mono">
-            <div class="flex justify-between border-b border-stone-900 pb-1">
-              <span class="text-stone-400">Project Type:</span>
-              <span id="outSpace" class="font-bold text-white">Kitchen Countertops</span>
-            </div>
-            <div class="flex justify-between border-b border-stone-900 pb-1">
-              <span class="text-stone-400">Material Interest:</span>
-              <span id="outStone" class="font-bold text-neon">Quartzite</span>
-            </div>
-            <div class="flex justify-between border-b border-stone-900 pb-1">
-              <span class="text-stone-400">Linear Footage:</span>
-              <span id="outSize" class="font-bold text-white">24 LF (~48 sq.ft)</span>
-            </div>
-            <div class="flex justify-between border-b border-stone-900 pb-1">
-              <span class="text-stone-400">Sink Swap Plumber:</span>
-              <span class="text-emerald-400 font-bold">Yes (Include partner plumber)</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-stone-400">Quote Status:</span>
-              <span class="text-neon font-black">✓ Ready for Same-Day Pricing</span>
-            </div>
-          </div>
-
-          <p class="text-[11px] text-stone-400 leading-relaxed pt-2">
-            Zero endless phone tag. You know the exact dimensions, space, and material before you even pick up the phone.
-          </p>
-        </div>
-      </div>
-    </div>
   </section>
 
-  <!-- ── 6 BONUS UNDER-THE-HOOD FIXES ── -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-12" id="audit">
+  <!-- ── 6 BONUS GOOGLE & TECHNICAL FIXES ── -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-6" id="audit">
     <div class="border-2 border-black bg-white p-6 sm:p-8 shadow-brutal">
       <div class="mb-6">
         <span class="text-[11px] font-black uppercase bg-black text-white px-2 py-0.5">INCLUDED IN BOTH OPTIONS</span>
@@ -525,17 +761,17 @@
     </div>
   </section>
 
-  <!-- ── PRICING SECTION (2 SIMPLE OPTIONS + RUSH TOGGLE) ── -->
+  <!-- ── PRICING SECTION (2 SIMPLE OPTIONS + CALL RULES + RUSH TOGGLE) ── -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16" id="pricing">
     <div class="text-center space-y-3 mb-10">
       <div class="inline-block bg-neon text-black border-2 border-black px-3 py-1 text-xs font-black uppercase tracking-widest shadow-brutal-sm">
-        TRANSPARENT ESTIMATE
+        TRANSPARENT PROPOSAL
       </div>
       <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-black font-display">
         TWO WAYS TO DO THIS
       </h2>
       <p class="text-stone-600 text-xs sm:text-sm max-w-xl mx-auto">
-        No monthly retainers. Choose between a plug-in upgrade to your current site or a full redesign.
+        No monthly retainers. Choose between plugging the fixes into your current site (no calls needed) or doing a full redesign (brief 15-min call).
       </p>
 
       <!-- Turnaround Speed Toggle -->
@@ -554,75 +790,106 @@
 
     <!-- Pricing Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      <!-- OPTION A -->
-      <div class="border-2 border-black bg-white p-6 sm:p-8 shadow-brutal flex flex-col justify-between">
-        <div>
+      
+      <!-- OPTION A: PLUG-IN FIXES (ZERO CALLS NEEDED) -->
+      <div class="border-2 border-black bg-white p-6 sm:p-8 shadow-brutal flex flex-col justify-between relative">
+        <!-- Call Policy Badge -->
+        <div class="absolute -top-3.5 left-6 bg-black text-neon text-[10px] font-black uppercase px-3 py-0.5 border border-black shadow-brutal-sm tracking-wider">
+          🚫 ZERO CALLS NEEDED · 100% ASYNC
+        </div>
+
+        <div class="pt-2">
           <div class="flex justify-between items-baseline mb-2">
             <span id="priceLabelA" class="text-xs font-black uppercase bg-neon px-2 py-0.5 border border-black">OPTION A · 2 WEEKS</span>
             <span id="hoursA" class="text-[11px] font-bold text-stone-500">~22–26 ENGINEERING HRS</span>
           </div>
+          
           <h3 class="text-2xl font-black text-black uppercase font-display">Plug-In Upgrade & Fixes</h3>
-          <div class="my-4">
+          
+          <div class="my-3">
             <span id="priceValA" class="text-5xl font-black text-black font-display">$750</span>
             <span class="text-xs text-stone-500 font-bold">one-time flat fee</span>
           </div>
-          <p id="priceDescA" class="text-xs text-stone-600 pb-4 border-b-2 border-black leading-relaxed">
-            Keep your current WordPress site — we build and plug in the 3 interactive features and resolve every technical SEO leak over 2 weeks.
-          </p>
 
-          <ul class="space-y-2.5 text-xs text-stone-800 my-6">
+          <!-- The "No Calls" Callout Box -->
+          <div class="p-3 bg-stone-100 border border-black text-xs text-stone-800 mb-4 space-y-1">
+            <div class="font-black uppercase text-black flex items-center gap-1.5">
+              <span>⚡</span>
+              <span>NO MEETINGS. NO ZOOM CALLS.</span>
+            </div>
+            <p class="text-[11px] text-stone-600 leading-normal">
+              You stay in the shop cutting stone. Just give us your WordPress login — we build the 3 interactive tools, fix the Google SEO bugs, test on mobile, and hand it back running.
+            </p>
+          </div>
+
+          <ul class="space-y-2.5 text-xs text-stone-800 my-5">
+            <li class="flex items-start gap-2">
+              <span class="font-black text-black">✓</span>
+              <span><strong>45-Second Estimate Builder</strong> embedded on Contact & Homepage</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="font-black text-black">✓</span>
+              <span><strong>Fix Contact Page</strong> (replaces AI card with real form & clickable phone)</span>
+            </li>
             <li class="flex items-start gap-2">
               <span class="font-black text-black">✓</span>
               <span><strong>Interactive Stone Finder Guide</strong> (Granite, Quartzite, Quartz, Soapstone)</span>
             </li>
             <li class="flex items-start gap-2">
               <span class="font-black text-black">✓</span>
-              <span><strong>"Template to Install" Timeline & Warranty</strong> with partner plumber perk</span>
+              <span><strong>"Template to Install" 2-Week Timeline</strong> highlighting partner plumber</span>
             </li>
             <li class="flex items-start gap-2">
               <span class="font-black text-black">✓</span>
-              <span><strong>45-Second Estimate Builder</strong> on Contact & Homepage</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="font-black text-black">✓</span>
-              <span><strong>Fix Contact Page</strong> (replace AI card with real form & clickable phone)</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="font-black text-black">✓</span>
-              <span><strong>All 6 Technical SEO Fixes</strong> (Gallery Google indexing & 20 town links)</span>
+              <span><strong>All 6 Google SEO Fixes</strong> (Gallery Google indexing & 20 town links)</span>
             </li>
           </ul>
         </div>
 
-        <a id="btnA" href="mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20A%20($750)" class="w-full py-3.5 bg-black text-white text-center text-xs font-black uppercase tracking-wider border-2 border-black hover:bg-neon hover:text-black transition-all shadow-brutal-sm">
-          Choose Option A ($750 · 2 Weeks) →
+        <a id="btnA" href="mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20A%20($750)%20No%20Call%20Needed" class="w-full py-3.5 bg-black text-white text-center text-xs font-black uppercase tracking-wider border-2 border-black hover:bg-neon hover:text-black transition-all shadow-brutal-sm mt-4">
+          Choose Option A ($750 · No Call Needed) →
         </a>
       </div>
 
-      <!-- OPTION B -->
-      <div class="border-2 border-black bg-white p-6 sm:p-8 shadow-brutal flex flex-col justify-between">
-        <div>
+      <!-- OPTION B: FULL REDESIGN (15-MIN CALL REQUIRED) -->
+      <div class="border-2 border-black bg-white p-6 sm:p-8 shadow-brutal flex flex-col justify-between relative">
+        <!-- Call Policy Badge -->
+        <div class="absolute -top-3.5 left-6 bg-neon text-black text-[10px] font-black uppercase px-3 py-0.5 border border-black shadow-brutal-sm tracking-wider">
+          📞 BRIEF 15-MIN STRATEGY CALL FIRST
+        </div>
+
+        <div class="pt-2">
           <div class="flex justify-between items-baseline mb-2">
             <span id="priceLabelB" class="text-xs font-black uppercase bg-stone-100 px-2 py-0.5 border border-black">OPTION B · 4 WEEKS</span>
             <span id="hoursB" class="text-[11px] font-bold text-stone-500">~48–55 ENGINEERING HRS</span>
           </div>
-          <h3 class="text-2xl font-black text-black uppercase font-display">Full Website Redesign</h3>
-          <div class="my-4">
-            <span id="priceValB" class="text-5xl font-black text-black font-display">$1,400</span>
-            <span class="text-xs text-stone-500 font-bold">50% to start, 50% on launch</span>
-          </div>
-          <p id="priceDescB" class="text-xs text-stone-600 pb-4 border-b-2 border-black leading-relaxed">
-            If you'd like a complete visual overhaul built from scratch with modern speed, polished styling, and filterable portfolio pages over 4 weeks.
-          </p>
 
-          <ul class="space-y-2.5 text-xs text-stone-800 my-6">
+          <h3 class="text-2xl font-black text-black uppercase font-display">Full Website Redesign</h3>
+
+          <div class="my-3">
+            <span id="priceValB" class="text-5xl font-black text-black font-display">$1,400</span>
+            <span class="text-xs text-stone-500 font-bold">50% down, 50% on launch</span>
+          </div>
+
+          <!-- The "Brief Call" Callout Box -->
+          <div class="p-3 bg-neon/30 border border-black text-xs text-stone-800 mb-4 space-y-1">
+            <div class="font-black uppercase text-black flex items-center gap-1.5">
+              <span>📞</span>
+              <span>15-MINUTE ALIGNMENT CALL REQUIRED</span>
+            </div>
+            <p class="text-[11px] text-stone-700 leading-normal">
+              Before redesigning your entire website from scratch, we do one quick 15-minute call to align on your project portfolio, branding, and custom page structure.
+            </p>
+          </div>
+
+          <ul class="space-y-2.5 text-xs text-stone-800 my-5">
             <li class="flex items-start gap-2">
               <span class="font-black text-black">✓</span>
-              <span><strong>Everything in Option A included</strong> (Guide, Timeline, Form, and SEO fixes)</span>
+              <span><strong>Everything in Option A included</strong> (Estimate form, stone guide, timeline)</span>
             </li>
             <li class="flex items-start gap-2">
               <span class="font-black text-black">✓</span>
-              <span><strong>Full Redesign of All Pages:</strong> Homepage, About Us (1921 story), Cabinetry, Contact</span>
+              <span><strong>Full Ground-Up Redesign:</strong> Homepage, About Us (1921 story), Cabinetry, Contact</span>
             </li>
             <li class="flex items-start gap-2">
               <span class="font-black text-black">✓</span>
@@ -630,24 +897,25 @@
             </li>
             <li class="flex items-start gap-2">
               <span class="font-black text-black">✓</span>
-              <span><strong>New Stoughton & Boston Hubs</strong> + refresh of all 20 town pages</span>
+              <span><strong>New Stoughton & Boston Hubs</strong> + fresh landing pages for all 20 South Shore towns</span>
             </li>
             <li class="flex items-start gap-2">
               <span class="font-black text-black">✓</span>
-              <span><strong>Domain Email Setup</strong> (retiring the generic gmail address)</span>
+              <span><strong>Domain Email Setup</strong> (retires the generic @gmail.com address)</span>
             </li>
           </ul>
         </div>
 
-        <a id="btnB" href="mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20B%20($1,400)" class="w-full py-3.5 bg-neon text-black text-center text-xs font-black uppercase tracking-wider border-2 border-black hover:bg-black hover:text-white transition-all shadow-brutal-sm">
-          Choose Option B ($1,400 · 4 Weeks) →
+        <a id="btnB" href="mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20B%20($1,400)%20Schedule%2015-Min%20Call" class="w-full py-3.5 bg-neon text-black text-center text-xs font-black uppercase tracking-wider border-2 border-black hover:bg-black hover:text-white transition-all shadow-brutal-sm mt-4">
+          Choose Option B ($1,400 · Book 15-Min Call) →
         </a>
       </div>
+
     </div>
 
-    <!-- Contact Direct -->
+    <!-- Direct Email Help -->
     <div class="mt-12 text-center text-xs text-stone-600">
-      Need to talk it through? Reply to our email or reach us directly at <a href="mailto:sales@mander.tech" class="font-bold underline text-black">sales@mander.tech</a>.
+      Questions? Reply to our email or reach us directly at <a href="mailto:sales@mander.tech" class="font-bold underline text-black">sales@mander.tech</a>.
     </div>
   </section>
 
@@ -658,7 +926,19 @@
     </div>
   </footer>
 
-  <!-- ── SCRIPT: INTERACTIVE CONTROLS ── -->
+  <!-- ── STICKY MOBILE BOTTOM ACTION BAR (MOBILE FRIENDLY FIRST) ── -->
+  <aside aria-label="Mobile quick actions" class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t-2 border-black p-2.5 flex items-center gap-2 shadow-brutal">
+    <a href="#pricing" onclick="document.getElementById('schedStd').click()" class="flex-1 py-2.5 bg-black text-white text-center text-[11px] font-black uppercase border border-black flex flex-col items-center justify-center leading-tight">
+      <span>OPTION A · $750</span>
+      <span class="text-[9px] text-neon font-normal">No Call Needed</span>
+    </a>
+    <a href="#pricing" onclick="document.getElementById('schedStd').click()" class="flex-1 py-2.5 bg-neon text-black text-center text-[11px] font-black uppercase border border-black flex flex-col items-center justify-center leading-tight">
+      <span>OPTION B · $1,400</span>
+      <span class="text-[9px] text-stone-800 font-normal">15-Min Call</span>
+    </a>
+  </aside>
+
+  <!-- ── SCRIPT: INTERACTIVE CONTROLS & CONFETTI ── -->
   <script>
     function switchTab(tabId, btn) {
       document.querySelectorAll('.demo-pane').forEach(el => el.classList.add('hidden'));
@@ -713,13 +993,13 @@
     function submitEstimateSim(btn) {
       if (typeof confetti === 'function') {
         confetti({
-          particleCount: 65,
+          particleCount: 75,
           spread: 70,
           origin: { y: 0.6 }
         });
       }
       const origText = btn.textContent;
-      btn.textContent = '✓ Lead Sent To Inbox (Simulation)';
+      btn.textContent = '✓ Estimate Email Simulated!';
       btn.classList.add('bg-neon', 'text-black');
       btn.classList.remove('bg-black', 'text-white');
       setTimeout(() => {
@@ -742,14 +1022,14 @@
         document.getElementById('priceLabelA').textContent = "OPTION A · 2 WEEKS";
         document.getElementById('hoursA').textContent = "~22–26 ENGINEERING HRS";
         document.getElementById('priceValA').textContent = "$750";
-        document.getElementById('btnA').textContent = "Choose Option A ($750 · 2 Weeks) →";
-        document.getElementById('btnA').href = "mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20A%20($750)";
+        document.getElementById('btnA').textContent = "Choose Option A ($750 · No Call Needed) →";
+        document.getElementById('btnA').href = "mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20A%20($750)%20No%20Call%20Needed";
 
         document.getElementById('priceLabelB').textContent = "OPTION B · 4 WEEKS";
         document.getElementById('hoursB').textContent = "~48–55 ENGINEERING HRS";
         document.getElementById('priceValB').textContent = "$1,400";
-        document.getElementById('btnB').textContent = "Choose Option B ($1,400 · 4 Weeks) →";
-        document.getElementById('btnB').href = "mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20B%20($1,400)";
+        document.getElementById('btnB').textContent = "Choose Option B ($1,400 · Book 15-Min Call) →";
+        document.getElementById('btnB').href = "mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20B%20($1,400)%20Schedule%2015-Min%20Call";
       } else {
         if (typeof confetti === 'function') {
           confetti({
@@ -765,14 +1045,14 @@
         document.getElementById('priceLabelA').textContent = "OPTION A · 7-DAY RUSH";
         document.getElementById('hoursA').textContent = "~26 HRS + 10 OVERTIME HRS";
         document.getElementById('priceValA').textContent = "$980";
-        document.getElementById('btnA').textContent = "Choose Rush Option A ($980 · 7 Days) →";
-        document.getElementById('btnA').href = "mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20A%20Rush%20($980)";
+        document.getElementById('btnA').textContent = "Choose Rush Option A ($980 · No Call Needed) →";
+        document.getElementById('btnA').href = "mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20A%20Rush%20($980)%20No%20Call%20Needed";
 
         document.getElementById('priceLabelB').textContent = "OPTION B · 2-WEEK RUSH";
         document.getElementById('hoursB').textContent = "~55 HRS + 20 OVERTIME HRS";
         document.getElementById('priceValB').textContent = "$1,850";
-        document.getElementById('btnB').textContent = "Choose Rush Option B ($1,850 · 2 Weeks) →";
-        document.getElementById('btnB').href = "mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20B%20Rush%20($1,850)";
+        document.getElementById('btnB').textContent = "Choose Rush Option B ($1,850 · Book 15-Min Call) →";
+        document.getElementById('btnB').href = "mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20B%20Rush%20($1,850)%20Schedule%2015-Min%20Call";
       }
     }
   </script>
