@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BOSTON BLUESTONE // SITE AUDIT & BEFORE/AFTER</title>
   <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230A0A0A%22/><text x=%2250%%22 y=%2255%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2265%22 font-family=%22monospace%22 font-weight=%22900%22 fill=%22%23FFFFFF%22>B</text></svg>" />
 
   <!-- Bold Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -782,8 +783,8 @@
             </div>
 
             <div>
-              <label class="block font-bold mb-1.5 uppercase text-xs text-gray-700">2. SELECT STONE MATERIAL:</label>
-              <select id="simStoneSelect" onchange="syncSim()" class="w-full brutal-border p-2.5 bg-white outline-none font-mono text-xs sm:text-sm font-bold">
+              <label for="simStoneSelect" class="block font-bold mb-1.5 uppercase text-xs text-gray-700">2. SELECT STONE MATERIAL:</label>
+              <select id="simStoneSelect" name="simStoneSelect" onchange="syncSim()" class="w-full brutal-border p-2.5 bg-white outline-none font-mono text-xs sm:text-sm font-bold">
                 <option value="Quartzite" data-rate="135">QUARTZITE (NATURAL LUXURY · ~$135/LF)</option>
                 <option value="Granite" data-rate="95">GRANITE (100% NATURAL &amp; HEAT PROOF · ~$95/LF)</option>
                 <option value="Quartz" data-rate="100">QUARTZ (ZERO MAINTENANCE · ~$100/LF)</option>
@@ -793,10 +794,10 @@
 
             <div>
               <div class="flex justify-between items-baseline mb-1.5">
-                <label class="font-bold uppercase text-xs text-gray-700">3. ESTIMATED LINEAR FEET:</label>
+                <label for="simLfInput" class="font-bold uppercase text-xs text-gray-700">3. ESTIMATED LINEAR FEET:</label>
                 <span id="simLfLabel" class="bg-brand-black text-white px-2 py-0.5 font-bold text-xs">24 LF (~48 sq.ft)</span>
               </div>
-              <input type="range" min="10" max="50" value="24" oninput="setSimLf(this.value)" class="w-full brutal-border appearance-none bg-brand-gray h-4 cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-brand-black" />
+              <input id="simLfInput" name="simLfInput" aria-label="Estimated Linear Feet" type="range" min="10" max="50" value="24" oninput="setSimLf(this.value)" class="w-full brutal-border appearance-none bg-brand-gray h-4 cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-brand-black" />
               <div class="flex justify-between font-mono text-[10px] text-gray-500 mt-1 font-bold">
                 <span>Small (12 LF)</span>
                 <span>Average (24 LF)</span>
@@ -1277,19 +1278,6 @@
   </main>
 
   <script>
-    // Tab Logic
-    function switchTab(tabId, btn) {
-      document.querySelectorAll('.demo-pane').forEach(el => el.classList.add('hidden'));
-      document.getElementById(tabId).classList.remove('hidden');
-      
-      document.querySelectorAll('.tab-btn').forEach(el => {
-        el.classList.remove('bg-brand-black', 'text-brand-white');
-        el.classList.add('bg-white');
-      });
-      btn.classList.remove('bg-white');
-      btn.classList.add('bg-brand-black', 'text-brand-white');
-    }
-
     // Tab Logic
     function switchTab(tabId, btn) {
       document.querySelectorAll('.demo-pane').forEach(el => el.classList.add('hidden'));
