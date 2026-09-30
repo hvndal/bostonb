@@ -628,67 +628,99 @@
       </div>
       
       <div class="flex flex-wrap gap-3 font-mono text-xs sm:text-sm font-bold">
-        <button onclick="switchTab('tab-quote', this)" class="tab-btn brutal-border bg-brand-black text-brand-white px-4 py-2 transition-all">
-          [01] 45-SEC ESTIMATE BUILDER
+        <button onclick="switchTab('tab-quote', this)" class="tab-btn brutal-border bg-brand-black text-brand-white px-4 py-2.5 transition-all shadow-brutal-sm">
+          [01] 45-SEC LIVE ESTIMATOR
         </button>
-        <button onclick="switchTab('tab-guide', this)" class="tab-btn brutal-border bg-white hover:bg-brand-gray px-4 py-2 transition-all">
+        <button onclick="switchTab('tab-guide', this)" class="tab-btn brutal-border bg-white hover:bg-brand-gray px-4 py-2.5 transition-all shadow-brutal-sm">
           [02] STONE COMPARISON GUIDE
         </button>
-        <button onclick="switchTab('tab-process', this)" class="tab-btn brutal-border bg-white hover:bg-brand-gray px-4 py-2 transition-all">
+        <button onclick="switchTab('tab-process', this)" class="tab-btn brutal-border bg-white hover:bg-brand-gray px-4 py-2.5 transition-all shadow-brutal-sm">
           [03] 2-WEEK TIMELINE + PLUMBER
         </button>
       </div>
 
-      <!-- DEMO: ESTIMATOR -->
+      <!-- DEMO: ESTIMATOR (LIVE PRICE ENGINE) -->
       <div id="tab-quote" class="demo-pane brutal-border p-6 sm:p-8 shadow-brutal bg-white">
-        <h3 class="text-xl sm:text-2xl font-bold uppercase mb-6 border-b-2 border-brand-black pb-2">
-          MODULE 1: INSTANT ESTIMATE CAPTURE
-        </h3>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-brand-black pb-4 mb-6">
+          <div>
+            <span class="font-mono text-xs font-black bg-brand-black text-white px-2 py-0.5 uppercase">
+              MODULE 01 // LIVE LEAD ENGINE
+            </span>
+            <h3 class="text-xl sm:text-2xl font-extrabold uppercase mt-1">
+              45-SECOND INSTANT ESTIMATE BUILDER
+            </h3>
+          </div>
+          <!-- Live Real-Time Dynamic Price Badge -->
+          <div class="brutal-border bg-brand-gray p-3 flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+            <div>
+              <div class="font-mono text-[10px] font-bold text-gray-500 uppercase">LIVE ESTIMATED BALLPARK:</div>
+              <div id="dynPriceTicker" class="text-xl sm:text-2xl font-black text-black font-mono tracking-tight">$3,240 – $3,960</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div class="space-y-4 font-mono text-xs sm:text-sm">
             <div>
-              <label class="block font-bold mb-2">SELECT SPACE:</label>
-              <div class="grid grid-cols-2 gap-2">
-                <button type="button" onclick="setSimSpace('Kitchen Countertops', this)" class="sim-btn brutal-border bg-brand-black text-white px-3 py-2 text-left font-bold">
+              <label class="block font-bold mb-1.5 uppercase text-xs text-gray-700">1. SELECT PROJECT SPACE:</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" onclick="setSimSpace('Kitchen Countertops', 1.0, this)" class="sim-btn brutal-border bg-brand-black text-white py-2 px-1 text-center font-bold text-xs">
                   KITCHEN
                 </button>
-                <button type="button" onclick="setSimSpace('Bathroom Vanity', this)" class="sim-btn brutal-border bg-white px-3 py-2 hover:bg-brand-gray text-left font-bold">
+                <button type="button" onclick="setSimSpace('Bathroom Vanity', 0.65, this)" class="sim-btn brutal-border bg-white hover:bg-brand-gray py-2 px-1 text-center font-bold text-xs">
                   VANITY
+                </button>
+                <button type="button" onclick="setSimSpace('Island / Bar', 1.25, this)" class="sim-btn brutal-border bg-white hover:bg-brand-gray py-2 px-1 text-center font-bold text-xs">
+                  ISLAND
                 </button>
               </div>
             </div>
+
             <div>
-              <label class="block font-bold mb-2">MATERIAL INTEREST:</label>
-              <select id="simStoneSelect" onchange="syncSim()" class="w-full brutal-border p-2.5 bg-white outline-none font-mono text-xs sm:text-sm">
-                <option value="Quartzite">QUARTZITE (NATURAL LUXURY)</option>
-                <option value="Granite">GRANITE (100% NATURAL &amp; HEAT PROOF)</option>
-                <option value="Quartz">QUARTZ (ZERO MAINTENANCE)</option>
-                <option value="Soapstone">SOAPSTONE (NEW ENGLAND CLASSIC)</option>
+              <label class="block font-bold mb-1.5 uppercase text-xs text-gray-700">2. SELECT STONE MATERIAL:</label>
+              <select id="simStoneSelect" onchange="syncSim()" class="w-full brutal-border p-2.5 bg-white outline-none font-mono text-xs sm:text-sm font-bold">
+                <option value="Quartzite" data-rate="135">QUARTZITE (NATURAL LUXURY · ~$135/LF)</option>
+                <option value="Granite" data-rate="95">GRANITE (100% NATURAL &amp; HEAT PROOF · ~$95/LF)</option>
+                <option value="Quartz" data-rate="100">QUARTZ (ZERO MAINTENANCE · ~$100/LF)</option>
+                <option value="Soapstone" data-rate="115">SOAPSTONE (NEW ENGLAND CLASSIC · ~$115/LF)</option>
               </select>
             </div>
+
             <div>
-              <div class="flex justify-between items-baseline mb-2">
-                <label class="font-bold">LINEAR FOOTAGE:</label>
-                <span id="simLfLabel" class="bg-brand-black text-white px-2 py-0.5 font-bold">24 LF (~48 sq.ft)</span>
+              <div class="flex justify-between items-baseline mb-1.5">
+                <label class="font-bold uppercase text-xs text-gray-700">3. ESTIMATED LINEAR FEET:</label>
+                <span id="simLfLabel" class="bg-brand-black text-white px-2 py-0.5 font-bold text-xs">24 LF (~48 sq.ft)</span>
               </div>
               <input type="range" min="10" max="50" value="24" oninput="setSimLf(this.value)" class="w-full brutal-border appearance-none bg-brand-gray h-4 cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-brand-black" />
+              <div class="flex justify-between font-mono text-[10px] text-gray-500 mt-1 font-bold">
+                <span>Small (12 LF)</span>
+                <span>Average (24 LF)</span>
+                <span>Large Island (40+ LF)</span>
+              </div>
             </div>
 
-            <div class="border-2 border-dashed border-gray-400 p-3 text-center text-xs text-gray-600 bg-brand-gray">
-              📷 Optional: Attach kitchen photo or layout sketch
+            <!-- Simulated Interactive Photo Attachment -->
+            <div>
+              <label class="block font-bold mb-1 uppercase text-xs text-gray-700">4. KITCHEN PHOTO ATTACHMENT:</label>
+              <div id="dropzoneSim" onclick="togglePhotoSim()" class="border-2 border-dashed border-gray-400 p-3 text-center text-xs text-gray-700 bg-brand-gray cursor-pointer hover:border-black transition-all">
+                <span id="dropzoneText">📷 Click to simulate attaching kitchen photo (layout.jpg)</span>
+              </div>
             </div>
 
-            <button type="button" onclick="submitEstimateSim(this)" class="w-full brutal-border bg-brand-black text-white font-bold py-3.5 hover:bg-white hover:text-black transition-colors uppercase shadow-brutal-sm">
+            <button id="simSubmitBtn" type="button" onclick="submitEstimateSim(this)" class="w-full brutal-border bg-brand-black text-white font-bold py-3.5 hover:bg-white hover:text-black transition-colors uppercase shadow-brutal-sm font-mono text-sm">
               SIMULATE SUBMITTING ESTIMATE →
             </button>
           </div>
           
-          <div class="brutal-border p-5 bg-brand-gray flex flex-col justify-between">
+          <!-- Live Real-Time Inbox Dossier -->
+          <div class="brutal-border p-5 bg-brand-gray flex flex-col justify-between space-y-4">
             <div>
               <div class="font-mono text-xs font-bold border-b-2 border-brand-black pb-2 mb-3 flex items-center justify-between">
-                <span>INBOX RECEIVED // STRUCTURED LEAD</span>
-                <span class="bg-brand-black text-white px-1.5 py-0.5 text-[10px]">REAL-TIME</span>
+                <span>INBOX RECEIVED // INSTANT LEAD</span>
+                <span id="leadStatusBadge" class="bg-brand-black text-white px-1.5 py-0.5 text-[10px]">REAL-TIME</span>
               </div>
+
               <div class="space-y-2 font-mono text-xs">
                 <div class="flex justify-between border-b border-gray-300 pb-1">
                   <span class="text-gray-600">PROJECT:</span>
@@ -703,116 +735,250 @@
                   <span id="outSize" class="font-bold">24 LF (~48 sq.ft)</span>
                 </div>
                 <div class="flex justify-between border-b border-gray-300 pb-1">
+                  <span class="text-gray-600">PHOTO ATTACHED:</span>
+                  <span id="outPhoto" class="font-bold text-gray-500">None attached</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-300 pb-1">
                   <span class="text-gray-600">PLUMBER SINK SWAP:</span>
                   <span class="font-bold">Included (Partner Plumber)</span>
                 </div>
-                <div class="flex justify-between">
+                <div class="flex justify-between border-b border-gray-300 pb-1">
+                  <span class="text-gray-600">BALLPARK QUOTE:</span>
+                  <span id="outPrice" class="font-bold text-black text-sm">$3,240 – $3,960</span>
+                </div>
+                <div class="flex justify-between pt-1">
                   <span class="text-gray-600">TIMELINE:</span>
                   <span class="font-bold">2 Weeks from Template</span>
                 </div>
               </div>
             </div>
 
-            <div class="mt-4 pt-3 border-t-2 border-brand-black font-mono text-xs text-gray-700">
-              You reply with a ballpark price and invite them to view full slabs in Stoughton. Zero phone tag.
+            <div class="p-2.5 bg-white border border-brand-black text-[11px] font-mono text-gray-700">
+              💡 <strong>Why this wins jobs:</strong> Homeowners get instant feedback at 9:00 PM without waiting. You get an exact dimensional lead sent straight to sales@bostonbluestone.com.
             </div>
           </div>
         </div>
       </div>
 
-      <!-- DEMO: STONE GUIDE -->
+      <!-- ════════════════════════════════════════════════════════════
+           MODULE 2: INTERACTIVE STONE COMPARISON GUIDE (WITH FILTERS)
+           ════════════════════════════════════════════════════════════ -->
       <div id="tab-guide" class="demo-pane hidden brutal-border p-6 sm:p-8 shadow-brutal bg-white">
-        <h3 class="text-xl sm:text-2xl font-bold uppercase mb-6 border-b-2 border-brand-black pb-2">
-          MODULE 2: STONE COMPARISON GUIDE
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs sm:text-sm">
-          <div class="brutal-border p-4 bg-white flex flex-col justify-between">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-brand-black pb-4 mb-6">
+          <div>
+            <span class="font-mono text-xs font-black bg-brand-black text-white px-2 py-0.5 uppercase">
+              MODULE 02 // INTERACTIVE GUIDE
+            </span>
+            <h3 class="text-xl sm:text-2xl font-extrabold uppercase mt-1">
+              STONE COMPARISON &amp; RECOMMENDATION
+            </h3>
+          </div>
+
+          <!-- Interactive Filter Buttons -->
+          <div class="flex flex-wrap gap-2 font-mono text-xs font-bold">
+            <button onclick="filterStones('all', this)" class="stone-pill px-3 py-1.5 brutal-border bg-brand-black text-white">
+              ALL STONES
+            </button>
+            <button onclick="filterStones('cook', this)" class="stone-pill px-3 py-1.5 brutal-border bg-white hover:bg-brand-gray text-black">
+              🍳 HOT POTS DIRECT
+            </button>
+            <button onclick="filterStones('luxury', this)" class="stone-pill px-3 py-1.5 brutal-border bg-white hover:bg-brand-gray text-black">
+              💎 MARBLE LOOK
+            </button>
+            <button onclick="filterStones('zero', this)" class="stone-pill px-3 py-1.5 brutal-border bg-white hover:bg-brand-gray text-black">
+              🛡️ ZERO SEALING
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs sm:text-sm" id="stoneGrid">
+          
+          <!-- Granite Card -->
+          <div id="stone-granite" class="stone-card brutal-border p-5 bg-white flex flex-col justify-between transition-all" data-category="cook all">
             <div>
               <div class="flex items-center justify-between mb-2">
                 <h4 class="font-extrabold text-base uppercase">GRANITE</h4>
                 <span class="text-[10px] font-bold bg-brand-gray border border-brand-black px-1.5 py-0.5">100% NATURAL</span>
               </div>
-              <div class="h-32 mb-3 border-2 border-brand-black overflow-hidden bg-brand-gray">
+              
+              <div class="h-36 mb-3 border-2 border-brand-black overflow-hidden relative">
                 <img src="https://bostonbluestone.com/wp-content/uploads/2021/12/Kitchen-Countertops-Home-Page-min.jpg" alt="Granite countertop" class="w-full h-full object-cover" />
+                <span id="badge-granite" class="absolute top-2 left-2 bg-brand-black text-white font-mono text-[10px] px-2 py-0.5 font-bold uppercase hidden">
+                  TOP PICK: DIRECT HEAT
+                </span>
               </div>
-              <ul class="space-y-1.5 text-xs">
-                <li><strong>HEAT:</strong> 10/10 (Direct boiling pots)</li>
-                <li><strong>SCRATCH:</strong> 9/10 (Knife resistant)</li>
-                <li><strong>CARE:</strong> 5-min annual wipe seal</li>
-              </ul>
+
+              <!-- Animated Comparison Meters -->
+              <div class="space-y-2 mb-4 font-mono text-xs">
+                <div>
+                  <div class="flex justify-between text-[11px] mb-0.5"><span>Heat Resistance:</span><strong>10/10 (Boiling Pots)</strong></div>
+                  <div class="w-full h-2 bg-gray-200 border border-black"><div class="h-full bg-black w-full"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[11px] mb-0.5"><span>Scratch Proof:</span><strong>9/10 (Direct Knife)</strong></div>
+                  <div class="w-full h-2 bg-gray-200 border border-black"><div class="h-full bg-black w-[90%]"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[11px] mb-0.5"><span>Maintenance:</span><span>Annual 5-min wipe</span></div>
+                  <div class="w-full h-2 bg-gray-200 border border-black"><div class="h-full bg-black w-[75%]"></div></div>
+                </div>
+              </div>
             </div>
-            <div class="mt-3 pt-2 border-t border-brand-black text-[11px] font-bold text-gray-600">
-              BEST FOR: Heavy cooking families
-            </div>
+
+            <button onclick="selectStoneForQuote('Granite')" class="w-full brutal-border bg-brand-gray hover:bg-black hover:text-white py-2 font-bold font-mono text-xs uppercase transition-colors">
+              USE GRANITE IN ESTIMATOR →
+            </button>
           </div>
 
-          <div class="brutal-border p-4 bg-brand-black text-white flex flex-col justify-between">
+          <!-- Quartzite Card -->
+          <div id="stone-quartzite" class="stone-card brutal-border p-5 bg-brand-black text-white flex flex-col justify-between transition-all" data-category="luxury cook all">
             <div>
               <div class="flex items-center justify-between mb-2">
                 <h4 class="font-extrabold text-base uppercase">QUARTZITE</h4>
                 <span class="text-[10px] font-bold bg-white text-black px-1.5 py-0.5">LUXURY NATURAL</span>
               </div>
-              <div class="h-32 mb-3 border-2 border-white overflow-hidden bg-gray-900">
+              
+              <div class="h-36 mb-3 border-2 border-white overflow-hidden relative">
                 <img src="https://bostonbluestone.com/wp-content/uploads/2021/12/Professional-Countertop-Installation-min.jpg" alt="Quartzite countertop" class="w-full h-full object-cover" />
+                <span id="badge-quartzite" class="absolute top-2 left-2 bg-white text-black font-mono text-[10px] px-2 py-0.5 font-bold uppercase">
+                  RECOMMENDED // MARBLE LOOK
+                </span>
               </div>
-              <ul class="space-y-1.5 text-xs">
-                <li><strong>HEAT:</strong> 10/10 (Handles high heat)</li>
-                <li><strong>HARDNESS:</strong> Harder than granite</li>
-                <li><strong>LOOK:</strong> Marble aesthetic, zero etch</li>
-              </ul>
+
+              <!-- Animated Comparison Meters -->
+              <div class="space-y-2 mb-4 font-mono text-xs text-gray-300">
+                <div>
+                  <div class="flex justify-between text-[11px] mb-0.5"><span>Heat Resistance:</span><strong class="text-white">10/10 (Very High)</strong></div>
+                  <div class="w-full h-2 bg-gray-700 border border-white"><div class="h-full bg-white w-full"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[11px] mb-0.5"><span>Hardness:</span><strong class="text-white">Harder than Granite</strong></div>
+                  <div class="w-full h-2 bg-gray-700 border border-white"><div class="h-full bg-white w-full"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[11px] mb-0.5"><span>Aesthetic:</span><span class="text-white">Airy marble veining, zero etch</span></div>
+                  <div class="w-full h-2 bg-gray-700 border border-white"><div class="h-full bg-white w-[90%]"></div></div>
+                </div>
+              </div>
             </div>
-            <div class="mt-3 pt-2 border-t border-gray-700 text-[11px] font-bold text-gray-300">
-              BEST FOR: High-end luxury kitchens
-            </div>
+
+            <button onclick="selectStoneForQuote('Quartzite')" class="w-full brutal-border bg-white text-black hover:bg-gray-200 py-2 font-bold font-mono text-xs uppercase transition-colors">
+              USE QUARTZITE IN ESTIMATOR →
+            </button>
           </div>
 
-          <div class="brutal-border p-4 bg-white flex flex-col justify-between">
+          <!-- Quartz Card -->
+          <div id="stone-quartz" class="stone-card brutal-border p-5 bg-white flex flex-col justify-between transition-all" data-category="zero all">
             <div>
               <div class="flex items-center justify-between mb-2">
                 <h4 class="font-extrabold text-base uppercase">QUARTZ</h4>
                 <span class="text-[10px] font-bold bg-brand-gray border border-brand-black px-1.5 py-0.5">ENGINEERED</span>
               </div>
-              <div class="h-32 mb-3 border-2 border-brand-black overflow-hidden bg-brand-gray">
+              
+              <div class="h-36 mb-3 border-2 border-brand-black overflow-hidden relative">
                 <img src="https://bostonbluestone.com/wp-content/uploads/2021/12/MainGallery_3.jpg" alt="Quartz countertop" class="w-full h-full object-cover" />
+                <span id="badge-quartz" class="absolute top-2 left-2 bg-brand-black text-white font-mono text-[10px] px-2 py-0.5 font-bold uppercase hidden">
+                  ZERO SEALING EVER
+                </span>
               </div>
-              <ul class="space-y-1.5 text-xs">
-                <li><strong>HEAT:</strong> 7/10 (Use trivet)</li>
-                <li><strong>STAINS:</strong> 10/10 (Non-porous)</li>
-                <li><strong>CARE:</strong> Zero sealing forever</li>
-              </ul>
+
+              <!-- Animated Comparison Meters -->
+              <div class="space-y-2 mb-4 font-mono text-xs">
+                <div>
+                  <div class="flex justify-between text-[11px] mb-0.5"><span>Heat Resistance:</span><strong>7/10 (Use Trivet)</strong></div>
+                  <div class="w-full h-2 bg-gray-200 border border-black"><div class="h-full bg-black w-[70%]"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[11px] mb-0.5"><span>Stain Proof:</span><strong>10/10 (Non-Porous)</strong></div>
+                  <div class="w-full h-2 bg-gray-200 border border-black"><div class="h-full bg-black w-full"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[11px] mb-0.5"><span>Maintenance:</span><strong>Zero Sealing Forever</strong></div>
+                  <div class="w-full h-2 bg-gray-200 border border-black"><div class="h-full bg-black w-full"></div></div>
+                </div>
+              </div>
             </div>
-            <div class="mt-3 pt-2 border-t border-brand-black text-[11px] font-bold text-gray-600">
-              BEST FOR: Zero-maintenance rentals/homes
-            </div>
+
+            <button onclick="selectStoneForQuote('Quartz')" class="w-full brutal-border bg-brand-gray hover:bg-black hover:text-white py-2 font-bold font-mono text-xs uppercase transition-colors">
+              USE QUARTZ IN ESTIMATOR →
+            </button>
           </div>
+
         </div>
       </div>
 
-      <!-- DEMO: TIMELINE -->
+      <!-- ════════════════════════════════════════════════════════════
+           MODULE 3: 2-WEEK TIMELINE & INTERACTIVE PLUMBER SCRUBBER
+           ════════════════════════════════════════════════════════════ -->
       <div id="tab-process" class="demo-pane hidden brutal-border p-6 sm:p-8 shadow-brutal bg-white">
-        <h3 class="text-xl sm:text-2xl font-bold uppercase mb-6 border-b-2 border-brand-black pb-2">
-          MODULE 3: 2-WEEK TIMELINE + PLUMBER PERK
-        </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 font-mono text-xs">
-          <div class="brutal-border p-4 bg-white">
-            <div class="font-black bg-brand-gray px-2 py-0.5 inline-block border border-brand-black mb-2">STEP 01 // DAY 1</div>
-            <h4 class="font-bold text-sm mb-1 uppercase">SLAB INSPECTION</h4>
-            <p class="text-gray-600">Homeowner views full slabs in Stoughton in natural daylight. Same-day pricing.</p>
+        <div class="border-b-2 border-brand-black pb-4 mb-6">
+          <span class="font-mono text-xs font-black bg-brand-black text-white px-2 py-0.5 uppercase">
+            MODULE 03 // INTERACTIVE PROCESS
+          </span>
+          <h3 class="text-xl sm:text-2xl font-extrabold uppercase mt-1">
+            2-WEEK TIMELINE &amp; PLUMBER SWAP SCRUBBER
+          </h3>
+          <p class="font-mono text-xs text-gray-600 mt-1">
+            Click on any phase below to inspect the shop workflow and the partner plumber installation checklist:
+          </p>
+        </div>
+
+        <!-- Interactive 4-Step Scrubber Buttons -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6 font-mono text-xs">
+          <button onclick="scrubTimeline(1, this)" class="step-btn brutal-border p-3 text-left bg-brand-black text-white transition-all shadow-brutal-sm">
+            <div class="text-[10px] font-bold text-gray-400">PHASE 01</div>
+            <div class="font-extrabold text-sm">SLAB SELECTION</div>
+            <div class="text-[11px] mt-1 text-gray-300">Day 1 · Stoughton Yard</div>
+          </button>
+
+          <button onclick="scrubTimeline(2, this)" class="step-btn brutal-border p-3 text-left bg-white hover:bg-brand-gray text-black transition-all">
+            <div class="text-[10px] font-bold text-gray-500">PHASE 02</div>
+            <div class="font-extrabold text-sm">LASER TEMPLATE</div>
+            <div class="text-[11px] mt-1 text-gray-600">Days 3–5 · In Home</div>
+          </button>
+
+          <button onclick="scrubTimeline(3, this)" class="step-btn brutal-border p-3 text-left bg-white hover:bg-brand-gray text-black transition-all">
+            <div class="text-[10px] font-bold text-gray-500">PHASE 03</div>
+            <div class="font-extrabold text-sm">CNC FABRICATION</div>
+            <div class="text-[11px] mt-1 text-gray-600">Days 5–10 · Shop Saws</div>
+          </button>
+
+          <button onclick="scrubTimeline(4, this)" class="step-btn brutal-border p-3 text-left bg-white hover:bg-brand-gray text-black transition-all">
+            <div class="text-[10px] font-bold text-gray-500">PHASE 04</div>
+            <div class="font-extrabold text-sm">INSTALL + PLUMBER</div>
+            <div class="text-[11px] mt-1 text-gray-600">Days 10–14 · 1-Day Turnkey</div>
+          </button>
+        </div>
+
+        <!-- Dynamic Phase Inspection Drawer -->
+        <div id="timelineDrawer" class="brutal-border p-6 bg-brand-gray">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b-2 border-brand-black pb-4 mb-4">
+            <div>
+              <span id="drawerPhaseBadge" class="font-mono text-xs font-black bg-brand-black text-white px-2 py-0.5 uppercase">
+                PHASE 01 // DAY 1
+              </span>
+              <h4 id="drawerPhaseTitle" class="text-xl sm:text-2xl font-extrabold uppercase mt-1">
+                SLAB INSPECTION AT 199 TURNPIKE ST
+              </h4>
+            </div>
+            <div class="font-mono text-xs bg-white border border-brand-black px-3 py-1.5 font-bold">
+              TIMELINE IMPACT: <span id="drawerTimeImpact" class="text-emerald-700">SAME-DAY PRICING</span>
+            </div>
           </div>
-          <div class="brutal-border p-4 bg-white">
-            <div class="font-black bg-brand-gray px-2 py-0.5 inline-block border border-brand-black mb-2">STEP 02 // DAYS 3-5</div>
-            <h4 class="font-bold text-sm mb-1 uppercase">LASER TEMPLATE</h4>
-            <p class="text-gray-600">Digital laser measurements accurate to 1/16". Old counters stay in place.</p>
-          </div>
-          <div class="brutal-border p-4 bg-white">
-            <div class="font-black bg-brand-gray px-2 py-0.5 inline-block border border-brand-black mb-2">STEP 03 // DAYS 5-10</div>
-            <h4 class="font-bold text-sm mb-1 uppercase">CNC FABRICATION</h4>
-            <p class="text-gray-600">Bridge saws, CNC routing, and hand edge detailing inside your Stoughton shop.</p>
-          </div>
-          <div class="brutal-border p-4 bg-brand-black text-white">
-            <div class="font-black bg-white text-black px-2 py-0.5 inline-block border border-white mb-2">STEP 04 // DAYS 10-14</div>
-            <h4 class="font-bold text-sm mb-1 uppercase">1-DAY INSTALL + PLUMBER</h4>
-            <p class="text-gray-300">Installed in 1 day. <strong>Partner plumber handles the sink swap</strong> without extra calls.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono text-xs" id="drawerContent">
+            <div class="space-y-2">
+              <strong class="text-black uppercase block text-sm">WHAT BOSTON BLUESTONE DOES:</strong>
+              <p id="drawerShopDo" class="text-gray-800 leading-relaxed font-sans text-sm font-medium">
+                Customer walks the Stoughton yard with a master fabricator to inspect full natural quartzite, granite, and marble slabs under natural New England daylight. Slabs are tagged, held, and priced that afternoon.
+              </p>
+            </div>
+            <div class="space-y-2">
+              <strong class="text-black uppercase block text-sm">WHAT THE HOMEOWNER EXPERIENCES:</strong>
+              <p id="drawerHomeownerExperience" class="text-gray-800 leading-relaxed font-sans text-sm font-medium">
+                Zero guessing from tiny 3-inch showroom samples. Homeowners see the exact veining pattern, seam placements, and color variation before a single cut is made.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -982,10 +1148,30 @@
       btn.classList.add('bg-brand-black', 'text-brand-white');
     }
 
-    // Estimator Logic
+    // Tab Logic
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.demo-pane').forEach(el => el.classList.add('hidden'));
+      document.getElementById(tabId).classList.remove('hidden');
+      
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('bg-brand-black', 'text-brand-white');
+        el.classList.add('bg-white');
+      });
+      btn.classList.remove('bg-white');
+      btn.classList.add('bg-brand-black', 'text-brand-white');
+    }
+
+    // ───────────────────────────────────────────────
+    // MODULE 1: ESTIMATOR & LIVE PRICE ENGINE
+    // ───────────────────────────────────────────────
     let currentSpace = 'Kitchen Countertops';
-    function setSimSpace(space, btn) {
+    let currentMultiplier = 1.0;
+    let photoAttached = false;
+    let currentLf = 24;
+
+    function setSimSpace(space, multiplier, btn) {
       currentSpace = space;
+      currentMultiplier = multiplier;
       document.querySelectorAll('.sim-btn').forEach(el => {
         el.classList.remove('bg-brand-black', 'text-white');
         el.classList.add('bg-white');
@@ -996,32 +1182,190 @@
     }
     
     function setSimLf(val) {
-      document.getElementById('simLfLabel').textContent = val + ' LF (~' + (parseInt(val)*2) + ' sq.ft)';
+      currentLf = parseInt(val);
+      document.getElementById('simLfLabel').textContent = val + ' LF (~' + (currentLf * 2) + ' sq.ft)';
       syncSim();
+    }
+
+    function togglePhotoSim() {
+      photoAttached = !photoAttached;
+      const dropzone = document.getElementById('dropzoneSim');
+      const text = document.getElementById('dropzoneText');
+      const outPhoto = document.getElementById('outPhoto');
+      
+      if (photoAttached) {
+        dropzone.classList.remove('bg-brand-gray', 'border-gray-400');
+        dropzone.classList.add('bg-emerald-50', 'border-black');
+        text.innerHTML = '✓ <strong>kitchen_island_dimensions.jpg (2.8 MB)</strong> attached! Click to remove.';
+        outPhoto.innerHTML = '<span class="text-emerald-700 font-bold">✓ layout_photo.jpg (2.8 MB)</span>';
+      } else {
+        dropzone.classList.add('bg-brand-gray', 'border-gray-400');
+        dropzone.classList.remove('bg-emerald-50', 'border-black');
+        text.innerHTML = '📷 Click to simulate attaching kitchen photo (layout.jpg)';
+        outPhoto.textContent = 'None attached';
+      }
     }
     
     function syncSim() {
-      const stone = document.getElementById('simStoneSelect').value;
-      const lf = document.getElementById('simLfLabel').textContent;
+      const select = document.getElementById('simStoneSelect');
+      const stone = select.value;
+      const rate = parseInt(select.options[select.selectedIndex].getAttribute('data-rate') || 110);
       
+      // Calculate dynamic price range
+      const baseTotal = currentLf * rate * currentMultiplier;
+      const lowPrice = Math.round(baseTotal * 0.95 / 10) * 10;
+      const highPrice = Math.round(baseTotal * 1.15 / 10) * 10;
+      const priceStr = '$' + lowPrice.toLocaleString() + ' – $' + highPrice.toLocaleString();
+
+      // Update Tickers & Output
+      document.getElementById('dynPriceTicker').textContent = priceStr;
+      document.getElementById('outPrice').textContent = priceStr;
       document.getElementById('outSpace').textContent = currentSpace;
       document.getElementById('outStone').textContent = stone;
-      document.getElementById('outSize').textContent = lf;
+      document.getElementById('outSize').textContent = currentLf + ' LF (~' + (currentLf * 2) + ' sq.ft)';
     }
 
     function submitEstimateSim(btn) {
       const ogText = btn.textContent;
-      btn.textContent = "TRANSMITTING TO INBOX...";
+      const badge = document.getElementById('leadStatusBadge');
+      
+      btn.textContent = "1/3 VALIDATING DIMENSIONS...";
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.textContent = "2/3 PRICING STOUGHTON SLABS...";
+      }, 500);
+
+      setTimeout(() => {
+        btn.textContent = "3/3 TRANSMITTING LEAD TO SHOP...";
+      }, 1000);
+
       setTimeout(() => {
         confetti({
-          particleCount: 100,
-          spread: 70,
+          particleCount: 120,
+          spread: 80,
           origin: { y: 0.6 },
           colors: ['#0A0A0A', '#333333', '#888888']
         });
-        btn.textContent = "ESTIMATE RECEIVED IN INBOX ✓";
-        setTimeout(() => btn.textContent = ogText, 2500);
-      }, 500);
+        badge.textContent = "DISPATCHED TO SHOP INBOX ✓";
+        badge.classList.remove('bg-brand-black');
+        badge.classList.add('bg-emerald-600');
+        
+        btn.textContent = "ESTIMATE RECEIVED BY BOSTON BLUESTONE ✓";
+        btn.classList.remove('bg-brand-black');
+        btn.classList.add('bg-emerald-600');
+
+        setTimeout(() => {
+          btn.textContent = ogText;
+          btn.disabled = false;
+          btn.classList.remove('bg-emerald-600');
+          btn.classList.add('bg-brand-black');
+          badge.textContent = "REAL-TIME";
+          badge.classList.remove('bg-emerald-600');
+          badge.classList.add('bg-brand-black');
+        }, 3500);
+      }, 1600);
+    }
+
+    // ───────────────────────────────────────────────
+    // MODULE 2: INTERACTIVE STONE FILTERS
+    // ───────────────────────────────────────────────
+    function filterStones(category, btn) {
+      document.querySelectorAll('.stone-pill').forEach(el => {
+        el.classList.remove('bg-brand-black', 'text-white');
+        el.classList.add('bg-white', 'text-black');
+      });
+      btn.classList.remove('bg-white', 'text-black');
+      btn.classList.add('bg-brand-black', 'text-white');
+
+      const cards = document.querySelectorAll('.stone-card');
+      cards.forEach(card => {
+        const cats = card.getAttribute('data-category') || '';
+        if (category === 'all' || cats.includes(category)) {
+          card.classList.remove('opacity-30', 'scale-95');
+          card.classList.add('opacity-100', 'scale-100');
+        } else {
+          card.classList.add('opacity-30', 'scale-95');
+          card.classList.remove('opacity-100', 'scale-100');
+        }
+      });
+
+      // Badges toggle
+      document.getElementById('badge-granite').classList.toggle('hidden', category !== 'cook');
+      document.getElementById('badge-quartz').classList.toggle('hidden', category !== 'zero');
+    }
+
+    function selectStoneForQuote(stoneName) {
+      // Switch to estimate tab
+      const quoteBtn = document.querySelectorAll('.tab-btn')[0];
+      switchTab('tab-quote', quoteBtn);
+      
+      // Set dropdown
+      const select = document.getElementById('simStoneSelect');
+      select.value = stoneName;
+      syncSim();
+
+      // Scroll to estimator smoothly
+      document.getElementById('tab-quote').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // ───────────────────────────────────────────────
+    // MODULE 3: TIMELINE INTERACTIVE SCRUBBER
+    // ───────────────────────────────────────────────
+    const timelineData = {
+      1: {
+        badge: "PHASE 01 // DAY 1",
+        title: "SLAB INSPECTION AT 199 TURNPIKE ST",
+        impact: "SAME-DAY PRICING",
+        shopDo: "Customer walks the Stoughton yard with a master fabricator to inspect full natural quartzite, granite, and marble slabs under natural New England daylight. Slabs are tagged, held, and priced that afternoon.",
+        homeDo: "Zero guessing from tiny 3-inch showroom samples. Homeowners see the exact veining pattern, seam placements, and color variation before a single cut is made."
+      },
+      2: {
+        badge: "PHASE 02 // DAYS 3–5",
+        title: "DIGITAL LASER TEMPLATING IN HOME",
+        impact: "ACCURATE TO 1/16 INCH",
+        shopDo: "Laser technician arrives with Proliner digital measurement gear, capturing wall bows, corners, and sink cutouts down to fractions of a millimeter in under 60 minutes.",
+        homeDo: "Crucial convenience perk: Your existing kitchen countertops remain completely in place. Your family continues cooking dinner with zero kitchen downtime until install morning."
+      },
+      3: {
+        badge: "PHASE 03 // DAYS 5–10",
+        title: "IN-HOUSE CNC MILLING & WATERJET",
+        impact: "ZERO OUTSOURCING",
+        shopDo: "Bridge saws and 5-axis CNC routers slice and profile the raw slab inside your Stoughton shop. Edges (ogee, demi-bullnose, mitered waterfall) are hand-polished by local craftsmen.",
+        homeDo: "You are not dealing with a middleman or internet broker waiting on overseas shipping containers. If a spec changes, the saw is right here in Massachusetts."
+      },
+      4: {
+        badge: "PHASE 04 // DAYS 10–14",
+        title: "1-DAY INSTALLATION + PLUMBER SINK SWAP",
+        impact: "100% COMPLETE TURNKEY",
+        shopDo: "Installation team sets the custom stone, locks tight epoxy seams, and mounts the undermount sink. Partner plumber immediately disconnects old plumbing and connects the new faucet, drain, and disposal on the same visit.",
+        homeDo: "Turnkey peace of mind. Homeowners do not have to spend $500 or wait 4 days for an independent plumber. The kitchen is fully plumbed and ready for dinner that same evening."
+      }
+    };
+
+    function scrubTimeline(step, btn) {
+      document.querySelectorAll('.step-btn').forEach(el => {
+        el.classList.remove('bg-brand-black', 'text-white', 'shadow-brutal-sm');
+        el.classList.add('bg-white', 'text-black');
+        el.querySelector('div:first-child').classList.remove('text-gray-400');
+        el.querySelector('div:first-child').classList.add('text-gray-500');
+        el.querySelector('div:last-child').classList.remove('text-gray-300');
+        el.querySelector('div:last-child').classList.add('text-gray-600');
+      });
+
+      btn.classList.remove('bg-white', 'text-black');
+      btn.classList.add('bg-brand-black', 'text-white', 'shadow-brutal-sm');
+      btn.querySelector('div:first-child').classList.remove('text-gray-500');
+      btn.querySelector('div:first-child').classList.add('text-gray-400');
+      btn.querySelector('div:last-child').classList.remove('text-gray-600');
+      btn.querySelector('div:last-child').classList.add('text-gray-300');
+
+      const data = timelineData[step];
+      document.getElementById('drawerPhaseBadge').textContent = data.badge;
+      document.getElementById('drawerPhaseTitle').textContent = data.title;
+      document.getElementById('drawerTimeImpact').textContent = data.impact;
+      document.getElementById('drawerShopDo').textContent = data.shopDo;
+      document.getElementById('drawerHomeownerExperience').textContent = data.homeDo;
     }
 
     // Pricing Logic
