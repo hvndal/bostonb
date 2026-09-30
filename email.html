@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boston Bluestone — Short HTML Email (Copy & Paste into Gmail)</title>
+  <title>Boston Bluestone — HTML Email</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-color: #EFECE6;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      color: #1F1D1A;
+      background-color: #F3F4F6;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #0A0A0A;
     }
     .helper-bar {
       max-width: 540px;
       margin: 24px auto 12px;
-      background: #1C1917;
+      background: #0A0A0A;
       color: #FFFFFF;
       padding: 14px 20px;
-      border-radius: 12px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -26,17 +26,16 @@
       font-size: 13px;
     }
     .copy-btn {
-      background: #3D5A45;
-      color: #FFFFFF;
-      border: none;
+      background: #FFFFFF;
+      color: #0A0A0A;
+      border: 2px solid #0A0A0A;
       padding: 9px 16px;
-      border-radius: 8px;
-      font-weight: 700;
+      font-weight: bold;
       font-size: 13px;
       cursor: pointer;
       white-space: nowrap;
     }
-    .copy-btn:hover { background: #2F4736; }
+    .copy-btn:hover { background: #E5E7EB; }
   </style>
 </head>
 <body>
@@ -44,65 +43,47 @@
   <!-- Top Helper Bar for You (Not copied into the email) -->
   <div class="helper-bar">
     <div>
-      <strong>1-Click Gmail Copy:</strong> Click to copy, then press <code>Ctrl+V</code> inside your Gmail reply.
+      <strong>1-Click Copy:</strong> Click to copy, then press <code>Ctrl+V</code> inside your Gmail reply.
     </div>
-    <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy Formatted Email</button>
+    <button class="copy-btn" id="copyBtn" onclick="copyEmail()">COPY EMAIL</button>
   </div>
 
-  <!-- ════════════════════════════════════════════════════════════
-       SHORT, HIGH-CLICK EMAIL CONTENT (100% Gmail Compatible)
-       ════════════════════════════════════════════════════════════ -->
+  <!-- SHORT EMAIL CONTENT -->
   <div id="emailContent" style="padding: 12px 12px 40px;">
-    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 540px; margin: 0 auto; background-color: #FAF8F5; border: 1px solid #E2D9C8; border-radius: 14px; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1F1D1A;">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 540px; margin: 0 auto; background-color: #FFFFFF; border: 3px solid #0A0A0A; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #0A0A0A; box-shadow: 4px 4px 0px #0A0A0A;">
       
-      <!-- Top Warm Strip -->
       <tr>
-        <td style="background-color: #F2ECE1; padding: 14px 28px; border-bottom: 1px solid #E2D9C8;">
-          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
-            <tr>
-              <td style="font-family: Georgia, 'Times New Roman', serif; font-size: 17px; font-weight: bold; color: #1F1D1A;">
-                Boston Bluestone
-              </td>
-              <td align="right" style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #8C6D46;">
-                Interactive Concept
-              </td>
-            </tr>
-          </table>
+        <td style="background-color: #F3F4F6; padding: 14px 24px; border-bottom: 3px solid #0A0A0A; font-weight: bold; font-size: 14px; text-transform: uppercase;">
+          BOSTON BLUESTONE // SITE AUDIT
         </td>
       </tr>
 
-      <!-- Short Body -->
       <tr>
-        <td style="padding: 28px 28px 26px;">
-          <p style="margin: 0 0 14px; font-size: 15px; line-height: 1.65; color: #1F1D1A;">
-            Hi there,
+        <td style="padding: 28px 24px;">
+          <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.5; font-weight: bold;">
+            Hey team,
           </p>
-          <p style="margin: 0 0 18px; font-size: 15px; line-height: 1.65; color: #4A453E;">
-            Instead of sending a static PDF, I built a live interactive page using your actual project photos so you can click through the stone guide, timeline, and estimate form yourself:
+          <p style="margin: 0 0 16px; font-size: 16px; line-height: 1.6;">
+            You guys fabricate great stone, but your current website is quietly leaking estimate requests. The contact form is just an unclickable picture, and mobile users are dropping off.
+          </p>
+          <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6;">
+            I put together a live, interactive teardown showing exactly where the issues are, along with the prototype fixes (like a 45-second estimate builder):
           </p>
 
-          <!-- CTA Card -->
-          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #FFFFFF; border: 1px solid #D4C9B8; border-radius: 10px; margin: 18px 0 20px;">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 24px;">
             <tr>
-              <td style="padding: 22px; text-align: center;">
-                <div style="font-family: Georgia, 'Times New Roman', serif; font-size: 20px; color: #1F1D1A; margin-bottom: 14px;">
-                  Boston Bluestone — Live Concept &amp; Site Review
-                </div>
-                <a href="https://hvndal.github.io/bostonb/" style="display: inline-block; background-color: #0A0A0A; color: #E2F952; text-decoration: none; font-size: 14px; font-weight: 800; padding: 12px 26px; border-radius: 6px; letter-spacing: 0.5px;">
-                  Open Interactive Concept →
+              <td align="center">
+                <a href="https://hvndal.github.io/bostonb/" style="display: inline-block; background-color: #0A0A0A; color: #FFFFFF; text-decoration: none; font-size: 16px; font-weight: bold; padding: 16px 32px; border: 2px solid #0A0A0A; text-transform: uppercase;">
+                  VIEW LIVE AUDIT & PROTOTYPE →
                 </a>
               </td>
             </tr>
           </table>
 
-          <p style="margin: 0 0 18px; font-size: 14.5px; line-height: 1.65; color: #4A453E;">
-            While putting it together, we also spotted a few hidden issues on your current site that are quietly costing you inquiries — I included screenshots of those inside the link, along with two simple ways we can handle it (either plugging straight into your current site, or a full refresh).
-          </p>
-
-          <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #1F1D1A;">
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; font-weight: bold;">
             Best,<br/>
-            <strong>mander.tech</strong><br/>
-            <a href="mailto:sales@mander.tech" style="font-size: 13px; color: #3D5A45; text-decoration: none;">sales@mander.tech</a>
+            Mander Tech<br/>
+            <a href="mailto:sales@mander.tech" style="color: #0A0A0A; text-decoration: underline;">sales@mander.tech</a>
           </p>
         </td>
       </tr>
@@ -120,11 +101,13 @@
       window.getSelection().removeAllRanges();
 
       const btn = document.getElementById('copyBtn');
-      btn.textContent = '✓ Copied! Now Ctrl+V in Gmail';
-      btn.style.background = '#8C6D46';
+      btn.textContent = 'COPIED ✓';
+      btn.style.background = '#0A0A0A';
+      btn.style.color = '#FFFFFF';
       setTimeout(() => {
-        btn.textContent = 'Copy Formatted Email';
-        btn.style.background = '#3D5A45';
+        btn.textContent = 'COPY EMAIL';
+        btn.style.background = '#FFFFFF';
+        btn.style.color = '#0A0A0A';
       }, 3000);
     }
   </script>

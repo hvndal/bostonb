@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boston Bluestone — Website Review & Revenue Growth Proposal</title>
+  <title>BOSTON BLUESTONE // SITE AUDIT</title>
   <meta name="robots" content="noindex, nofollow" />
 
-  <!-- Clean, highly readable typography (Inter) -->
+  <!-- Bold Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,16 +18,21 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
             brand: {
-              50: '#F0F7FF',
-              100: '#E0EFFF',
-              500: '#0066CC',
-              600: '#0052A3',
-              900: '#0A2540',
+              black: '#0A0A0A',
+              white: '#FFFFFF',
+              gray: '#F3F4F6',
+              border: '#E5E7EB',
             }
+          },
+          boxShadow: {
+            'brutal': '4px 4px 0px 0px rgba(10,10,10,1)',
+            'brutal-sm': '2px 2px 0px 0px rgba(10,10,10,1)',
+            'brutal-hover': '6px 6px 0px 0px rgba(10,10,10,1)',
           }
         }
       }
@@ -38,780 +43,405 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
-    html { scroll-behavior: smooth; }
     body {
-      background-color: #F1F4F8;
-      color: #1E293B;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #FFFFFF;
+      color: #0A0A0A;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
     }
-    @media print {
-      body { background-color: #FFFFFF; }
-      .no-print { display: none !important; }
-      .document-page { box-shadow: none !important; border: none !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
+    
+    ::selection {
+      background-color: #0A0A0A;
+      color: #FFFFFF;
     }
+
+    .brutal-border {
+      border: 3px solid #0A0A0A;
+    }
+
+    /* Tab hiding/showing logic */
+    .demo-pane.hidden { display: none; }
   </style>
 </head>
-<body class="p-3 sm:p-6 lg:p-10">
+<body class="p-4 sm:p-8 md:p-12 selection:bg-brand-black selection:text-brand-white">
 
-  <!-- ── FLOATING TOP CONTROLS (LIVE PDF TOOLBAR) ── -->
-  <div class="no-print max-w-4xl mx-auto mb-4 flex items-center justify-between bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm text-xs text-slate-600">
-    <div class="flex items-center gap-2 font-medium">
-      <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-      <span class="font-semibold text-slate-900">Live Executive Audit &amp; Proposal</span>
-      <span class="hidden sm:inline text-slate-300">|</span>
-      <span class="hidden sm:inline text-slate-500">Prepared for Boston Bluestone</span>
+  <!-- TOP BAR -->
+  <div class="max-w-5xl mx-auto mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div class="font-mono text-xs sm:text-sm font-bold uppercase tracking-tight">
+      [ INTERNAL AUDIT & PROPOSAL ]<br/>
+      TARGET: BOSTON BLUESTONE
     </div>
-    <div class="flex items-center gap-2">
-      <button onclick="window.print()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-lg transition-colors flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-        <span>Print / Save PDF</span>
-      </button>
-      <a href="#pricing" class="px-3 py-1.5 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-lg transition-colors">
-        Jump to Pricing ($750 / $1,400) →
+    <div class="flex gap-3">
+      <a href="mailto:sales@mander.tech" class="font-mono text-xs sm:text-sm font-bold uppercase tracking-tight hover:underline">
+        CONTACT // SALES@MANDER.TECH
+      </a>
+      <a href="#pricing" class="font-mono text-xs sm:text-sm font-bold uppercase tracking-tight bg-brand-black text-brand-white px-3 py-1 brutal-sm hover:translate-y-[2px] hover:shadow-none transition-all">
+        JUMP TO PRICING ↓
       </a>
     </div>
   </div>
 
-  <!-- ── MAIN DOCUMENT CONTAINER (CLEAN EXECUTIVE WHITE PAPER) ── -->
-  <main class="document-page max-w-4xl mx-auto bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden">
+  <main class="max-w-5xl mx-auto space-y-12">
     
-    <!-- ════════════════════════════════════════════════════════════
-         PAGE HEADER / COVER SECTION
-         ════════════════════════════════════════════════════════════ -->
-    <header class="p-6 sm:p-10 border-b border-slate-100 bg-gradient-to-b from-slate-50 to-white">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6 mb-6">
-        <div>
-          <div class="text-xs uppercase font-bold tracking-wider text-brand-600 mb-1">Confidential Website Review</div>
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-            Boston Bluestone — Site Audit &amp; Growth Plan
-          </h1>
-          <p class="text-sm text-slate-500 mt-1">199 Turnpike St., Stoughton, MA 02072 · Countertops &amp; Fabrication</p>
-        </div>
-        <div class="text-left sm:text-right text-xs text-slate-500 space-y-1 sm:border-l sm:border-slate-200 sm:pl-6">
-          <div><strong class="text-slate-800">Date:</strong> October 2026</div>
-          <div><strong class="text-slate-800">Author:</strong> Mander Tech</div>
-          <div><strong class="text-slate-800">Contact:</strong> <a href="mailto:sales@mander.tech" class="text-brand-600 hover:underline">sales@mander.tech</a></div>
-        </div>
-      </div>
-
-      <!-- Quick Executive Summary Note -->
-      <div class="bg-blue-50 border-l-4 border-brand-500 p-4 rounded-r-lg">
-        <h2 class="text-sm font-bold text-slate-900 mb-1">Executive Summary: The Core Opportunity</h2>
-        <p class="text-sm text-slate-700 leading-relaxed">
-          Boston Bluestone has stellar local reputation, real in-house saws, and premier credentials (Harvard, Ritz-Carlton). However, your current website loses valuable countertop inquiries because visitors cannot get an estimate online, the contact page has unclickable contact info, and mobile layout glitches cause visitors to bounce to local competitors.
-        </p>
-      </div>
+    <!-- HEADER -->
+    <header class="brutal-border p-6 sm:p-12 shadow-brutal bg-white">
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter leading-[0.9] uppercase mb-6">
+        YOU FABRICATE GREAT STONE.<br/>YOUR SITE LEAKS ESTIMATES.
+      </h1>
+      <p class="text-lg sm:text-xl font-medium max-w-3xl leading-relaxed">
+        Boston Bluestone has the Harvard credentials and an in-house CNC shop, but your current website is burning high-ticket leads. The contact page is broken, mobile is glitching, and visitors can't get an estimate. We fix this to capture ready buyers.
+      </p>
     </header>
 
-    <!-- ════════════════════════════════════════════════════════════
-         SECTION 1: THE 3 CORE PILLARS (SPEED, MONEY, RELIABILITY)
-         ════════════════════════════════════════════════════════════ -->
-    <section class="p-6 sm:p-10 border-b border-slate-100">
-      <div class="mb-6">
-        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Section 1</span>
-        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">The 3 Factors That Win Stone Fabrication Jobs</h2>
-        <p class="text-sm text-slate-500 mt-1">Countertops are high-ticket purchases ($4,500 – $12,000). Every buyer evaluates three main factors:</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <!-- THE 3 PILLARS -->
+    <section class="space-y-6">
+      <h2 class="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight">THE 3 FACTORS THAT WIN JOBS</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <!-- Pillar 1: Speed -->
-        <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 hover:border-slate-300 transition-all flex flex-col justify-between">
-          <div>
-            <div class="w-9 h-9 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-base mb-3">
-              ⚡
-            </div>
-            <h3 class="text-base font-bold text-slate-900 mb-1">1. Speed of Installation</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Homeowners dread living without kitchen counters for 6 to 8 weeks. Your shop can turn jobs around in <strong>2 weeks flat</strong> with digital laser templating in 48 hours. Putting this front and center immediately beats big-box retailers.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-200 text-[11px] font-semibold text-emerald-600">
-            ✓ 2-Week Timeline highlighted
-          </div>
+        <!-- Pillar 1 -->
+        <div class="brutal-border p-6 shadow-brutal-sm bg-white">
+          <div class="font-mono text-3xl font-bold mb-4">01 // SPEED</div>
+          <h3 class="text-xl font-bold uppercase mb-2">2-WEEK INSTALLS</h3>
+          <p class="text-sm font-medium leading-relaxed">
+            Homeowners dread 8-week delays. You cut stone in-house and flip jobs in 2 weeks flat. We make this your #1 weapon against big-box retailers.
+          </p>
         </div>
 
-        <!-- Pillar 2: Money Making -->
-        <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 hover:border-slate-300 transition-all flex flex-col justify-between">
-          <div>
-            <div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-base mb-3">
-              💰
-            </div>
-            <h3 class="text-base font-bold text-slate-900 mb-1">2. Capturing Ready Buyers</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Most homeowners browse kitchen sites at 9:00 PM on their couch. If they cannot get a ballpark quote in 45 seconds, they move to the next Google result. An instant online estimate builder turns visitors into high-intent leads.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-200 text-[11px] font-semibold text-emerald-600">
-            ✓ +$140k/yr potential from 2 saved jobs/mo
-          </div>
+        <!-- Pillar 2 -->
+        <div class="brutal-border p-6 shadow-brutal-sm bg-white">
+          <div class="font-mono text-3xl font-bold mb-4">02 // MONEY</div>
+          <h3 class="text-xl font-bold uppercase mb-2">INSTANT ESTIMATES</h3>
+          <p class="text-sm font-medium leading-relaxed">
+            Stop losing 9:00 PM couch-browsers. If they can't get a quote in 45 seconds, they bounce. We build an interactive estimate builder to catch them.
+          </p>
         </div>
 
-        <!-- Pillar 3: Reliability -->
-        <div class="p-5 rounded-xl border border-slate-200 bg-slate-50 hover:border-slate-300 transition-all flex flex-col justify-between">
-          <div>
-            <div class="w-9 h-9 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-base mb-3">
-              🛡️
-            </div>
-            <h3 class="text-base font-bold text-slate-900 mb-1">3. In-House Reliability</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Unlike online brokers who outsource fabrication, you own your Stoughton shop, cut stone with CNC precision, and offer a <strong>partner plumber for the sink swap</strong> on install day so homeowners don't have to hire extra trades.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-200 text-[11px] font-semibold text-emerald-600">
-            ✓ Plumber perk & Harvard credentials
-          </div>
+        <!-- Pillar 3 -->
+        <div class="brutal-border p-6 shadow-brutal-sm bg-white">
+          <div class="font-mono text-3xl font-bold mb-4">03 // RELIABILITY</div>
+          <h3 class="text-xl font-bold uppercase mb-2">PLUMBER INCLUDED</h3>
+          <p class="text-sm font-medium leading-relaxed">
+            No subcontractor headaches. You offer a partner plumber for the sink swap on install day. We blast this perk so homeowners know you're the stress-free choice.
+          </p>
         </div>
 
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════════
-         SECTION 2: CURRENT WEBSITE AUDIT (FULL VIEWABLE SCREENSHOTS)
-         ════════════════════════════════════════════════════════════ -->
-    <section class="p-6 sm:p-10 border-b border-slate-100 bg-slate-50/50">
-      <div class="mb-8">
-        <span class="text-xs font-bold uppercase tracking-wider text-rose-600">Section 2 · Technical Audit</span>
-        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">What Is Costing You Inquiries Right Now</h2>
-        <p class="text-sm text-slate-500 mt-1">Here are the exact issues currently live on <strong>bostonbluestone.com</strong> with unedited screenshots:</p>
+    <!-- TECHNICAL AUDIT (THE LEAKS) -->
+    <section class="brutal-border p-6 sm:p-12 shadow-brutal bg-brand-gray">
+      <div class="mb-8 border-b-4 border-brand-black pb-4">
+        <h2 class="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight">WHERE YOU ARE LOSING MONEY</h2>
+        <p class="font-mono text-sm font-bold mt-2">LIVE SCREENSHOTS FROM BOSTONBLUESTONE.COM</p>
       </div>
 
-      <!-- AUDIT ITEM 1: THE CONTACT PAGE LEAK -->
-      <div class="bg-white rounded-xl border border-slate-200 p-6 mb-8 shadow-sm">
-        <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 rounded text-xs font-bold bg-rose-100 text-rose-700">Issue #1 · Critical</span>
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">The Contact Page Has No Form &amp; Unclickable Info</h3>
-          </div>
-          <span class="text-xs text-slate-400 font-mono hidden sm:inline">/boston-bluestone-contact/</span>
-        </div>
-
-        <p class="text-sm text-slate-600 mb-4 leading-relaxed">
-          When a potential customer clicks "Contact", there is no contact form on the page. Instead, there is an image of a business card. Because it is a picture, <strong>the phone number and email cannot be tapped on a smartphone</strong>. The only button bounces visitors off your website to an external quoting system:
-        </p>
-
-        <!-- Full Readable Screenshot of Contact Page -->
-        <div class="rounded-lg border border-slate-200 overflow-hidden bg-slate-100 mb-4">
-          <div class="bg-slate-200 px-3 py-1.5 text-[11px] text-slate-600 font-mono flex items-center justify-between border-b border-slate-300">
-            <span>bostonbluestone.com/boston-bluestone-contact/</span>
-            <span class="text-rose-600 font-semibold">● 0 Forms Found</span>
-          </div>
-          <img src="screenshot-contact.jpg" alt="Contact page showing AI business card and external button" class="w-full h-auto object-contain" />
-        </div>
-
-        <!-- Visual Problem Markers -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-          <div class="p-3 bg-rose-50 border border-rose-200 rounded-lg text-xs text-rose-950">
-            <strong class="font-bold text-rose-700 block mb-1">🔍 Problem 1: Static Image Card</strong>
-            The phone number <span class="font-mono font-semibold">(781) 297-7707</span>, email, and address are baked inside a flat JPEG picture. On a phone, customers cannot tap to dial or tap to email.
-          </div>
-          <div class="p-3 bg-rose-50 border border-rose-200 rounded-lg text-xs text-rose-950">
-            <strong class="font-bold text-rose-700 block mb-1">🔍 Problem 2: Bounced to 3rd Party</strong>
-            The blue "Request a Free Estimate" button redirects visitors away to a third-party app with no project upload, losing customers who just wanted to send a quick photo.
-          </div>
-        </div>
-
-        <!-- Callout Banner -->
-        <div class="p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg text-xs text-emerald-900 space-y-1">
-          <div class="font-bold flex items-center gap-1.5">
-            <span>💡</span>
-            <span>How we fix this in Option A or B:</span>
-          </div>
-          <p>
-            We replace this with our built-in 45-second estimate builder. Customers select their room, stone preference, linear footage, attach a photo, and hit submit. You receive a structured lead email immediately with zero third-party fees.
+      <div class="space-y-12">
+        <!-- ISSUE 1 -->
+        <div>
+          <h3 class="text-2xl font-bold uppercase mb-4">LEAK 01: THE BROKEN CONTACT PAGE</h3>
+          <p class="text-base font-medium mb-6">
+            There is no contact form. Just an unclickable image of a business card. On mobile, customers cannot tap to dial. The only button kicks them off your site to a 3rd party.
           </p>
-        </div>
-      </div>
-
-      <!-- AUDIT ITEM 2: MOBILE LAYOUT ISSUES & BROKEN CODE -->
-      <div class="bg-white rounded-xl border border-slate-200 p-6 mb-8 shadow-sm">
-        <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 rounded text-xs font-bold bg-amber-100 text-amber-700">Issue #2 · Visual Bugs</span>
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">Overlapping Menus &amp; Broken Review Carousel</h3>
+          <div class="brutal-border shadow-brutal-sm bg-white p-2">
+            <img src="screenshot-contact.jpg" alt="Contact Page Bug" class="w-full h-auto object-contain" />
           </div>
-          <span class="text-xs text-slate-400 font-mono hidden sm:inline">Desktop &amp; Mobile Code Bugs</span>
         </div>
 
-        <p class="text-sm text-slate-600 mb-4 leading-relaxed">
-          In our audit, we caught live coding errors affecting visitors on both desktop and mobile. For example, your header navigation menu breaks loose and overlaps directly on top of the page content:
-        </p>
-
-        <!-- Full Readable Screenshot of Overlapping Navigation -->
-        <div class="rounded-lg border border-slate-200 overflow-hidden bg-slate-100 mb-4">
-          <div class="bg-slate-200 px-3 py-1.5 text-[11px] text-slate-600 font-mono flex items-center justify-between border-b border-slate-300">
-            <span>bostonbluestone.com (Live Navigation Bug)</span>
-            <span class="text-rose-600 font-semibold">● Menu Overlaps Text</span>
-          </div>
-          <img src="screenshot-footer.jpg" alt="Navigation code overlapping page content" class="w-full h-auto object-contain" />
-        </div>
-
-        <!-- Callout Banner -->
-        <div class="p-3.5 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-800 space-y-1">
-          <div class="font-bold flex items-center gap-1.5">
-            <span>⚠️</span>
-            <span>Why this hurts business:</span>
-          </div>
-          <p>
-            When a homeowner sees overlapping buttons and misaligned text, it diminishes trust. High-ticket stone fabrication requires conveying precision and attention to detail.
+        <!-- ISSUE 2 -->
+        <div>
+          <h3 class="text-2xl font-bold uppercase mb-4">LEAK 02: MOBILE MENU GLITCHES</h3>
+          <p class="text-base font-medium mb-6">
+            The header code is broken, causing menus to overlap content on both mobile and desktop. High-end stone buyers notice a lack of precision.
           </p>
-        </div>
-      </div>
-
-      <!-- AUDIT ITEM 3: TECHNICAL SEO & GOOGLE INDEXING -->
-      <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-        <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 rounded text-xs font-bold bg-blue-100 text-blue-700">Issue #3 · Search &amp; Google</span>
-            <h3 class="text-base sm:text-lg font-bold text-slate-900">80-Photo Gallery Hidden from Google &amp; 20 Orphaned Towns</h3>
-          </div>
-          <span class="text-xs text-slate-400 font-mono hidden sm:inline">Google Indexing Audit</span>
-        </div>
-
-        <p class="text-sm text-slate-600 mb-4 leading-relaxed">
-          During our technical crawl, we found that your complete 80-photo portfolio gallery is effectively hidden from Google search results due to a broken canonical URL tag pointing back to an old draft URL. In addition, 20 dedicated South Shore town landing pages (Canton, Sharon, Milton, Easton, etc.) have zero links pointing to them from your main navigation or footer.
-        </p>
-
-        <!-- Summary Grid of 6 Fixes -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-          <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-            <strong class="text-slate-900 block mb-0.5">1. Restore Gallery to Google:</strong>
-            <span class="text-slate-600">Fixes the broken canonical tag so your 80+ installation photos show up in Google Image search.</span>
-          </div>
-          <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-            <strong class="text-slate-900 block mb-0.5">2. Link 20 South Shore Towns:</strong>
-            <span class="text-slate-600">Connects all 20 town pages cleanly in the site footer so nearby homeowners find you locally.</span>
-          </div>
-          <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-            <strong class="text-slate-900 block mb-0.5">3. Unify 4 Founding Dates:</strong>
-            <span class="text-slate-600">Cleans up the conflicting mentions of 1921, 1972, 1998, and "two decades" into one authentic story.</span>
-          </div>
-          <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-            <strong class="text-slate-900 block mb-0.5">4. Fix Google Schema Markup:</strong>
-            <span class="text-slate-600">Replaces invalid Product schema code with verified HomeAndConstructionBusiness structured data.</span>
-          </div>
-          <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-            <strong class="text-slate-900 block mb-0.5">5. Remove Old GoDaddy Staging Asset:</strong>
-            <span class="text-slate-600">Eliminates an old leftover staging file (6vt.b68) that slows down your initial page load speed.</span>
-          </div>
-          <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-            <strong class="text-slate-900 block mb-0.5">6. Fix Overlapping Navigation Code:</strong>
-            <span class="text-slate-600">Removes the CSS z-index error causing the navigation bar to overlap your FAQ section.</span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="brutal-border shadow-brutal-sm bg-white p-2">
+              <img src="screenshot-mobile.jpg" alt="Mobile Bug" class="w-full h-auto object-contain" />
+            </div>
+            <div class="brutal-border shadow-brutal-sm bg-white p-2">
+              <img src="screenshot-footer.jpg" alt="Desktop Navigation Bug" class="w-full h-auto object-contain" />
+            </div>
           </div>
         </div>
       </div>
-
     </section>
 
-    <!-- ════════════════════════════════════════════════════════════
-         SECTION 3: WHAT WE PROPOSE TO BUILD (INTERACTIVE DEMO)
-         ════════════════════════════════════════════════════════════ -->
-    <section class="p-6 sm:p-10 border-b border-slate-100" id="demo">
-      <div class="mb-6">
-        <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Section 3 · Proposed Solutions</span>
-        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">Interactive Prototype: Test What We Would Add</h2>
-        <p class="text-sm text-slate-500 mt-1">Click the tabs below to test the three modules designed to turn website visitors into paid jobs:</p>
-      </div>
-
-      <!-- Navigation Tabs -->
-      <div class="flex flex-wrap gap-2 mb-6">
-        <button onclick="switchTab('tab-quote', this)" class="tab-btn px-4 py-2.5 rounded-lg text-xs font-bold transition-all bg-brand-500 text-white shadow-sm">
-          1. 45-Second Estimate Builder
+    <!-- INTERACTIVE DEMO -->
+    <section class="space-y-6">
+      <h2 class="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight">THE FIX: TEST THE PROTOTYPE</h2>
+      
+      <div class="flex flex-wrap gap-3 font-mono text-sm font-bold">
+        <button onclick="switchTab('tab-quote', this)" class="tab-btn brutal-border bg-brand-black text-brand-white px-4 py-2 transition-all">
+          [01] 45-SEC ESTIMATOR
         </button>
-        <button onclick="switchTab('tab-guide', this)" class="tab-btn px-4 py-2.5 rounded-lg text-xs font-bold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700">
-          2. Interactive Stone Comparison Guide
+        <button onclick="switchTab('tab-guide', this)" class="tab-btn brutal-border bg-white hover:bg-brand-gray px-4 py-2 transition-all">
+          [02] STONE GUIDE
         </button>
-        <button onclick="switchTab('tab-process', this)" class="tab-btn px-4 py-2.5 rounded-lg text-xs font-bold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700">
-          3. 2-Week Timeline &amp; Plumber Perk
+        <button onclick="switchTab('tab-process', this)" class="tab-btn brutal-border bg-white hover:bg-brand-gray px-4 py-2 transition-all">
+          [03] 2-WEEK TIMELINE
         </button>
       </div>
 
-      <!-- MODULE 1: 45-SECOND ESTIMATE BUILDER -->
-      <div id="tab-quote" class="demo-pane rounded-xl border border-slate-200 p-5 sm:p-6 bg-slate-50">
-        <div class="border-b border-slate-200 pb-4 mb-5">
-          <h3 class="text-lg font-bold text-slate-900">45-Second Quick Estimate Builder</h3>
-          <p class="text-xs text-slate-500 mt-0.5">Replaces the unclickable picture with an easy form homeowners can fill out from their phone in under a minute.</p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-          
-          <!-- Form Left -->
-          <div class="bg-white p-5 rounded-lg border border-slate-200 space-y-4 text-xs">
-            <div class="font-bold text-slate-900 text-sm">Interactive Customer Form:</div>
-
+      <!-- DEMO: ESTIMATOR -->
+      <div id="tab-quote" class="demo-pane brutal-border p-6 sm:p-8 shadow-brutal bg-white">
+        <h3 class="text-2xl font-bold uppercase mb-6 border-b-2 border-brand-black pb-2">INSTANT ESTIMATE CAPTURE</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="space-y-4 font-mono text-sm">
             <div>
-              <label class="block font-medium text-slate-700 mb-1">Select Project Area</label>
+              <label class="block font-bold mb-2">SELECT SPACE:</label>
               <div class="grid grid-cols-2 gap-2">
-                <button type="button" onclick="setSimSpace('Kitchen Countertops', this)" class="sim-btn py-2 px-3 rounded border border-brand-500 bg-brand-50 text-brand-700 font-bold text-center">
-                  Kitchen Countertops
-                </button>
-                <button type="button" onclick="setSimSpace('Bathroom Vanity', this)" class="sim-btn py-2 px-3 rounded border border-slate-200 bg-white text-slate-700 font-medium text-center hover:bg-slate-50">
-                  Bathroom Vanity
-                </button>
+                <button type="button" onclick="setSimSpace('Kitchen Countertops', this)" class="sim-btn brutal-border bg-brand-black text-white px-2 py-2">KITCHEN</button>
+                <button type="button" onclick="setSimSpace('Bathroom Vanity', this)" class="sim-btn brutal-border bg-white px-2 py-2 hover:bg-brand-gray">VANITY</button>
               </div>
             </div>
-
             <div>
-              <label class="block font-medium text-slate-700 mb-1">Stone Material Preference</label>
-              <select id="simStoneSelect" onchange="syncSim()" class="w-full border border-slate-200 rounded p-2 text-xs bg-white focus:outline-none focus:border-brand-500">
-                <option value="Quartzite">Quartzite (Natural luxury, harder than granite)</option>
-                <option value="Granite">Granite (100% natural, handles hot pans direct)</option>
-                <option value="Quartz">Quartz (Engineered, completely zero maintenance)</option>
-                <option value="Soapstone">Soapstone (Classic New England look)</option>
+              <label class="block font-bold mb-2">STONE TYPE:</label>
+              <select id="simStoneSelect" onchange="syncSim()" class="w-full brutal-border p-2 bg-white outline-none">
+                <option value="Quartzite">QUARTZITE</option>
+                <option value="Granite">GRANITE</option>
+                <option value="Quartz">QUARTZ</option>
               </select>
             </div>
-
             <div>
-              <div class="flex justify-between font-medium text-slate-700 mb-1">
-                <span>Approximate Countertop Size:</span>
-                <span id="simLfLabel" class="font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded">24 Linear Feet (~48 sq.ft)</span>
-              </div>
-              <input type="range" min="10" max="50" value="24" oninput="setSimLf(this.value)" class="w-full accent-brand-500 cursor-pointer h-2 bg-slate-200 rounded-lg" />
-              <div class="flex justify-between text-[10px] text-slate-400 mt-1">
-                <span>Small Galley (12 LF)</span>
-                <span>Average Kitchen (24 LF)</span>
-                <span>Large Island (40+ LF)</span>
-              </div>
+              <label class="block font-bold mb-2">LINEAR FEET: <span id="simLfLabel" class="bg-brand-black text-white px-1">24 LF</span></label>
+              <input type="range" min="10" max="50" value="24" oninput="setSimLf(this.value)" class="w-full brutal-border appearance-none bg-brand-gray h-4 cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-brand-black" />
             </div>
-
-            <div class="p-3 border border-dashed border-slate-300 rounded bg-slate-50 text-center text-slate-500 font-medium flex items-center justify-center gap-2">
-              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path></svg>
-              <span>Optional: Attach photo of current kitchen</span>
-            </div>
-
-            <button type="button" onclick="submitEstimateSim(this)" class="w-full py-2.5 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-lg shadow-sm transition-all text-xs">
-              Simulate Sending Estimate →
+            <button type="button" onclick="submitEstimateSim(this)" class="w-full brutal-border bg-brand-black text-white font-bold py-3 hover:bg-white hover:text-black transition-colors mt-4">
+              SEND TEST ESTIMATE →
             </button>
           </div>
-
-          <!-- Inbox Result Right -->
-          <div class="bg-slate-900 text-white p-5 rounded-lg border border-slate-800 space-y-4">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">What You Receive in Your Inbox:</span>
-              <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300">Instant Lead</span>
+          
+          <div class="brutal-border p-4 bg-brand-gray">
+            <div class="font-mono text-sm font-bold border-b-2 border-brand-black pb-2 mb-2">INBOX RECEIVED (LEAD)</div>
+            <div class="space-y-1 font-mono text-xs">
+              <div>PROJECT: <span id="outSpace" class="font-bold">Kitchen Countertops</span></div>
+              <div>STONE: <span id="outStone" class="font-bold">Quartzite</span></div>
+              <div>SIZE: <span id="outSize" class="font-bold">24 LF (~48 sq.ft)</span></div>
+              <div class="mt-4 bg-brand-black text-white p-2 inline-block">READY FOR PRICING ✓</div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div class="space-y-2 text-xs font-mono">
-              <div class="flex justify-between border-b border-slate-800 pb-1">
-                <span class="text-slate-400">Project Type:</span>
-                <span id="outSpace" class="font-semibold text-white">Kitchen Countertops</span>
-              </div>
-              <div class="flex justify-between border-b border-slate-800 pb-1">
-                <span class="text-slate-400">Selected Material:</span>
-                <span id="outStone" class="font-semibold text-emerald-400">Quartzite</span>
-              </div>
-              <div class="flex justify-between border-b border-slate-800 pb-1">
-                <span class="text-slate-400">Approximate Size:</span>
-                <span id="outSize" class="font-semibold text-white">24 LF (~48 sq.ft)</span>
-              </div>
-              <div class="flex justify-between border-b border-slate-800 pb-1">
-                <span class="text-slate-400">Plumber Sink Swap:</span>
-                <span class="text-emerald-400 font-semibold">Included (Partner Plumber)</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-slate-400">Status:</span>
-                <span class="text-white font-bold">✓ Ready for Same-Day Quote</span>
-              </div>
+      <!-- DEMO: STONE GUIDE -->
+      <div id="tab-guide" class="demo-pane hidden brutal-border p-6 sm:p-8 shadow-brutal bg-white">
+        <h3 class="text-2xl font-bold uppercase mb-6 border-b-2 border-brand-black pb-2">STONE COMPARISON GUIDE</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-sm">
+          <div class="brutal-border p-4">
+            <h4 class="font-bold text-lg mb-2">GRANITE</h4>
+            <div class="h-24 bg-brand-gray mb-2"></div>
+            <ul class="space-y-1">
+              <li>HEAT: 10/10</li>
+              <li>SCRATCH: 9/10</li>
+              <li>CARE: Annual Seal</li>
+            </ul>
+          </div>
+          <div class="brutal-border p-4 bg-brand-black text-white">
+            <h4 class="font-bold text-lg mb-2">QUARTZITE</h4>
+            <div class="h-24 bg-gray-800 mb-2"></div>
+            <ul class="space-y-1">
+              <li>HEAT: 10/10</li>
+              <li>HARDNESS: High</li>
+              <li>CARE: Annual Seal</li>
+            </ul>
+          </div>
+          <div class="brutal-border p-4">
+            <h4 class="font-bold text-lg mb-2">QUARTZ</h4>
+            <div class="h-24 bg-brand-gray mb-2"></div>
+            <ul class="space-y-1">
+              <li>HEAT: 7/10 (Trivet)</li>
+              <li>STAIN: 10/10</li>
+              <li>CARE: Zero Sealing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- DEMO: TIMELINE -->
+      <div id="tab-process" class="demo-pane hidden brutal-border p-6 sm:p-8 shadow-brutal bg-white">
+        <h3 class="text-2xl font-bold uppercase mb-6 border-b-2 border-brand-black pb-2">2-WEEK TIMELINE</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 font-mono text-sm">
+          <div class="brutal-border p-4">
+            <div class="font-bold mb-2">STEP 01</div>
+            <p>SLAB SELECTION</p>
+          </div>
+          <div class="brutal-border p-4">
+            <div class="font-bold mb-2">STEP 02</div>
+            <p>LASER TEMPLATE</p>
+          </div>
+          <div class="brutal-border p-4">
+            <div class="font-bold mb-2">STEP 03</div>
+            <p>IN-HOUSE CUTTING</p>
+          </div>
+          <div class="brutal-border p-4 bg-brand-black text-white">
+            <div class="font-bold mb-2">STEP 04</div>
+            <p>INSTALL + PLUMBER</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING & ONBOARDING -->
+    <section id="pricing" class="pt-8">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h2 class="text-4xl sm:text-6xl font-extrabold uppercase tracking-tighter mb-4">THE EXECUTION PLAN</h2>
+        <div class="flex flex-wrap justify-center gap-2 font-mono text-sm font-bold">
+          <button onclick="setSpeed('std')" id="schedStd" class="brutal-border px-4 py-2 bg-brand-black text-white transition-all">STANDARD PACING</button>
+          <button onclick="setSpeed('rush')" id="schedRush" class="brutal-border px-4 py-2 bg-white hover:bg-brand-gray transition-all">RUSH PRIORITY ⚡</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        
+        <!-- OPTION A -->
+        <div class="brutal-border p-6 sm:p-8 shadow-brutal bg-white flex flex-col justify-between hover:shadow-brutal-hover transition-all translate-y-0 hover:-translate-y-1">
+          <div>
+            <div class="font-mono font-bold bg-brand-gray px-2 py-1 inline-block border-2 border-brand-black mb-4">✓ ZERO CALLS NEEDED</div>
+            <h3 class="text-3xl font-extrabold uppercase mb-2">OPTION A: PLUG-IN</h3>
+            <div class="font-mono text-sm font-bold mb-4">
+              TIME: 2 WEEKS<br/>
+              HOURS: ~22-26<br/>
+              <span class="text-xs text-gray-500" id="hoursA">STANDARD PACING</span>
             </div>
-
-            <p class="text-[11px] text-slate-400 leading-relaxed pt-2">
-              Instead of playing phone tag, you know the exact dimensions and stone interest right away. You can reply with a ballpark price and invite them to view full slabs in Stoughton.
+            <div class="text-5xl font-extrabold mb-6" id="priceValA">$750</div>
+            
+            <p class="font-medium text-sm mb-6 border-l-4 border-brand-black pl-3 py-1">
+              Send us WordPress login. We build the estimator, fix the contact page, and repair SEO. Done completely async.
             </p>
           </div>
-
+          <a id="btnA" href="mailto:sales@mander.tech?subject=Option A ($750)" class="block brutal-border bg-brand-black text-white text-center font-bold font-mono py-4 hover:bg-white hover:text-black transition-colors uppercase">
+            SELECT OPTION A →
+          </a>
         </div>
-      </div>
 
-      <!-- MODULE 2: STONE COMPARISON GUIDE -->
-      <div id="tab-guide" class="demo-pane hidden rounded-xl border border-slate-200 p-5 sm:p-6 bg-slate-50">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-5">
+        <!-- OPTION B -->
+        <div class="brutal-border p-6 sm:p-8 shadow-brutal bg-white flex flex-col justify-between hover:shadow-brutal-hover transition-all translate-y-0 hover:-translate-y-1">
           <div>
-            <h3 class="text-lg font-bold text-slate-900">Interactive Stone Comparison Guide</h3>
-            <p class="text-xs text-slate-500 mt-0.5">Helps homeowners understand the pros and cons between Granite, Quartzite, and Quartz before visiting your yard.</p>
-          </div>
-
-          <div class="flex flex-wrap gap-2 text-xs">
-            <button onclick="filterStones('all', this)" class="stone-pill px-3 py-1.5 rounded-lg border border-slate-900 bg-slate-900 text-white font-bold">All Materials</button>
-            <button onclick="filterStones('family', this)" class="stone-pill px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-700 font-medium hover:bg-slate-100">Busy Kitchens</button>
-            <button onclick="filterStones('zero', this)" class="stone-pill px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-700 font-medium hover:bg-slate-100">Zero Maintenance</button>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5" id="stoneGrid">
-          
-          <!-- Granite -->
-          <div class="stone-card bg-white rounded-lg border border-slate-200 p-4 flex flex-col justify-between" data-cat="all family">
-            <div>
-              <div class="rounded overflow-hidden h-36 mb-3 bg-slate-100">
-                <img src="https://bostonbluestone.com/wp-content/uploads/2021/12/Kitchen-Countertops-Home-Page-min.jpg" alt="Granite" class="w-full h-full object-cover" />
-              </div>
-              <div class="flex justify-between items-baseline mb-1">
-                <h4 class="font-bold text-base text-slate-900">Granite</h4>
-                <span class="text-[11px] font-bold text-brand-600 bg-blue-50 px-2 py-0.5 rounded">100% Natural</span>
-              </div>
-              <p class="text-xs text-slate-600 mb-3 leading-relaxed">
-                Classic natural stone. Takes boiling hot pots directly without scorch marks. Resists knife scratches completely.
-              </p>
+            <div class="font-mono font-bold bg-brand-gray px-2 py-1 inline-block border-2 border-brand-black mb-4">📞 15-MIN CALL REQUIRED</div>
+            <h3 class="text-3xl font-extrabold uppercase mb-2">OPTION B: REDESIGN</h3>
+            <div class="font-mono text-sm font-bold mb-4">
+              TIME: 4 WEEKS<br/>
+              HOURS: ~48-55<br/>
+              <span class="text-xs text-gray-500" id="hoursB">STANDARD PACING</span>
             </div>
-            <div class="space-y-1 text-xs border-t border-slate-100 pt-2 text-slate-600">
-              <div class="flex justify-between"><span>Heat Resistance:</span><strong class="text-emerald-700">10/10 (direct pans)</strong></div>
-              <div class="flex justify-between"><span>Scratch Proof:</span><strong class="text-emerald-700">9/10</strong></div>
-              <div class="flex justify-between"><span>Care:</span><span>Annual 5-minute seal</span></div>
-            </div>
-          </div>
-
-          <!-- Quartzite -->
-          <div class="stone-card bg-white rounded-lg border border-slate-200 p-4 flex flex-col justify-between" data-cat="all family">
-            <div>
-              <div class="rounded overflow-hidden h-36 mb-3 bg-slate-100">
-                <img src="https://bostonbluestone.com/wp-content/uploads/2021/12/Professional-Countertop-Installation-min.jpg" alt="Quartzite" class="w-full h-full object-cover" />
-              </div>
-              <div class="flex justify-between items-baseline mb-1">
-                <h4 class="font-bold text-base text-slate-900">Quartzite</h4>
-                <span class="text-[11px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded">Luxury Natural</span>
-              </div>
-              <p class="text-xs text-slate-600 mb-3 leading-relaxed">
-                True natural stone with the airy veining of marble, but harder than granite. Won't etch from lemons or red wine.
-              </p>
-            </div>
-            <div class="space-y-1 text-xs border-t border-slate-100 pt-2 text-slate-600">
-              <div class="flex justify-between"><span>Heat Resistance:</span><strong class="text-emerald-700">10/10</strong></div>
-              <div class="flex justify-between"><span>Hardness:</span><strong class="text-emerald-700">Harder than Granite</strong></div>
-              <div class="flex justify-between"><span>Aesthetic:</span><span>Marble look, zero etch</span></div>
-            </div>
-          </div>
-
-          <!-- Quartz -->
-          <div class="stone-card bg-white rounded-lg border border-slate-200 p-4 flex flex-col justify-between" data-cat="all zero family">
-            <div>
-              <div class="rounded overflow-hidden h-36 mb-3 bg-slate-100">
-                <img src="https://bostonbluestone.com/wp-content/uploads/2021/12/MainGallery_3.jpg" alt="Quartz" class="w-full h-full object-cover" />
-              </div>
-              <div class="flex justify-between items-baseline mb-1">
-                <h4 class="font-bold text-base text-slate-900">Quartz</h4>
-                <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Zero Sealing</span>
-              </div>
-              <p class="text-xs text-slate-600 mb-3 leading-relaxed">
-                Engineered stone. Non-porous surface, completely stain-proof against red wine, coffee, and oils. Never needs sealing.
-              </p>
-            </div>
-            <div class="space-y-1 text-xs border-t border-slate-100 pt-2 text-slate-600">
-              <div class="flex justify-between"><span>Heat Resistance:</span><strong class="text-amber-700">7/10 (use trivet)</strong></div>
-              <div class="flex justify-between"><span>Stain Proof:</span><strong class="text-emerald-700">10/10</strong></div>
-              <div class="flex justify-between"><span>Care:</span><strong class="text-emerald-700">Zero sealing forever</strong></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- MODULE 3: 2-WEEK TIMELINE & PLUMBER PERK -->
-      <div id="tab-process" class="demo-pane hidden rounded-xl border border-slate-200 p-5 sm:p-6 bg-slate-50">
-        <div class="border-b border-slate-200 pb-4 mb-5">
-          <h3 class="text-lg font-bold text-slate-900">From Template to Install in 2 Weeks</h3>
-          <p class="text-xs text-slate-500 mt-0.5">Transparent 4-step process that eliminates fear of an unusable kitchen.</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-          <div class="p-4 rounded-lg border border-slate-200 bg-white">
-            <span class="text-[11px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded">STEP 1 · DAY 1</span>
-            <h4 class="font-bold text-slate-900 mt-2 mb-1">Slab Selection</h4>
-            <p class="text-slate-600">Customer inspects full slabs at 199 Turnpike St. in natural daylight and receives same-day pricing.</p>
-          </div>
-
-          <div class="p-4 rounded-lg border border-slate-200 bg-white">
-            <span class="text-[11px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded">STEP 2 · DAYS 3–5</span>
-            <h4 class="font-bold text-slate-900 mt-2 mb-1">Laser Templating</h4>
-            <p class="text-slate-600">Digital laser measurements accurate to 1/16". Old counters stay in place so the kitchen remains functional.</p>
-          </div>
-
-          <div class="p-4 rounded-lg border border-slate-200 bg-white">
-            <span class="text-[11px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded">STEP 3 · DAYS 5–10</span>
-            <h4 class="font-bold text-slate-900 mt-2 mb-1">In-House Cutting</h4>
-            <p class="text-slate-600">Bridge saws, CNC milling, and hand-finished edge profiles completed inside your Stoughton shop.</p>
-          </div>
-
-          <div class="p-4 rounded-lg border border-brand-300 bg-blue-50">
-            <span class="text-[11px] font-bold bg-brand-500 text-white px-2 py-0.5 rounded">STEP 4 · DAYS 10–14</span>
-            <h4 class="font-bold text-slate-900 mt-2 mb-1">1-Day Install + Plumber</h4>
-            <p class="text-slate-700">Counters installed in 1 day. <strong>Partner plumber handles the sink swap</strong> without extra contractor calls.</p>
-          </div>
-        </div>
-
-        <div class="mt-4 p-3 bg-white border border-slate-200 rounded-lg text-xs text-slate-600 flex items-center justify-between">
-          <div><strong>Commercial Proof:</strong> Harvard University · The Ritz-Carlton · Mandarin Oriental</div>
-          <span class="font-semibold text-brand-600">100% In-House Shop</span>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ════════════════════════════════════════════════════════════
-         SECTION 4: PRICING & OPTIONS (CLEAR ONBOARDING RULES)
-         ════════════════════════════════════════════════════════════ -->
-    <section class="p-6 sm:p-10" id="pricing">
-      <div class="text-center max-w-xl mx-auto mb-8">
-        <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Section 4 · Straightforward Pricing</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Two Clear Ways We Can Handle This</h2>
-        <p class="text-sm text-slate-500 mt-2">
-          No ongoing retainers. Choose between plugging the fixes into your current website (zero calls required) or doing a complete redesign (requires a brief 15-minute call first).
-        </p>
-
-        <!-- Turnaround Speed Selector -->
-        <div class="pt-4 flex items-center justify-center gap-2">
-          <button id="schedStd" onclick="setSpeed('std')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold border border-slate-900 bg-slate-900 text-white shadow-sm transition-all">
-            Standard Pacing (2 Wks / 4 Wks)
-          </button>
-          <button id="schedRush" onclick="setSpeed('rush')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 shadow-sm transition-all">
-            ⚡ Rush Priority (+Overtime Sprint)
-          </button>
-        </div>
-        <p id="schedNotice" class="text-xs text-slate-400 mt-2">
-          Standard Schedule — paced smoothly without interrupting your daily shop schedule.
-        </p>
-      </div>
-
-      <!-- Pricing Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-        
-        <!-- OPTION A: PLUG-IN FIXES -->
-        <div class="rounded-2xl border-2 border-slate-200 bg-white p-6 sm:p-7 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-all">
-          <div>
-            <!-- Call Requirement Badge -->
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 mb-3">
-              <span>✓</span>
-              <span>Zero Calls Needed (100% Async)</span>
-            </div>
-
-            <div class="flex justify-between items-baseline mb-1">
-              <span id="priceLabelA" class="text-xs font-bold uppercase text-slate-500">OPTION A · 2 WEEKS</span>
-              <span id="hoursA" class="text-[11px] text-slate-400 font-mono">~22–26 ENGINEERING HRS</span>
-            </div>
-
-            <h3 class="text-xl font-bold text-slate-900">Plug-In Upgrade &amp; Fixes</h3>
+            <div class="text-5xl font-extrabold mb-6" id="priceValB">$1,400</div>
             
-            <div class="my-3">
-              <span id="priceValA" class="text-4xl font-extrabold text-slate-900">$750</span>
-              <span class="text-xs text-slate-500 font-medium">one-time flat fee</span>
-            </div>
-
-            <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-600 mb-4 leading-relaxed">
-              <strong class="text-slate-800 block mb-0.5">How this works without calls:</strong>
-              You don't need to waste time on Zoom or phone meetings. Send us your WordPress login — we build the 3 interactive features, repair the contact page, fix all Google SEO bugs, and hand it back running.
-            </div>
-
-            <ul class="space-y-2 text-xs text-slate-700 my-4">
-              <li class="flex items-start gap-2">
-                <span class="text-emerald-600 font-bold">✓</span>
-                <span><strong>45-Second Estimate Builder</strong> embedded on Contact &amp; Homepage</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-emerald-600 font-bold">✓</span>
-                <span><strong>Fix Contact Page</strong> (replace AI card with real form &amp; clickable phone)</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-emerald-600 font-bold">✓</span>
-                <span><strong>Interactive Stone Finder Guide</strong> (Granite, Quartzite, Quartz)</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-emerald-600 font-bold">✓</span>
-                <span><strong>2-Week Timeline &amp; Plumber Perk</strong> clearly displayed</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-emerald-600 font-bold">✓</span>
-                <span><strong>All 6 Technical SEO Fixes</strong> (Gallery Google indexing &amp; 20 town links)</span>
-              </li>
-            </ul>
+            <p class="font-medium text-sm mb-6 border-l-4 border-brand-black pl-3 py-1">
+              Complete overhaul. Includes everything in A, plus an 80-photo filterable gallery, 20 South Shore town hubs, and professional domain email.
+            </p>
           </div>
-
-          <a id="btnA" href="mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20A%20($750)%20No%20Call%20Needed" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white text-center text-xs font-bold rounded-lg shadow-sm transition-all mt-4">
-            Select Option A ($750 · No Call Needed) →
+          <a id="btnB" href="mailto:sales@mander.tech?subject=Option B ($1,400) - Schedule Call" class="block brutal-border bg-brand-black text-white text-center font-bold font-mono py-4 hover:bg-white hover:text-black transition-colors uppercase">
+            SELECT OPTION B →
           </a>
         </div>
 
-        <!-- OPTION B: FULL REDESIGN -->
-        <div class="rounded-2xl border-2 border-brand-500 bg-white p-6 sm:p-7 shadow-md flex flex-col justify-between relative hover:border-brand-600 transition-all">
-          <div>
-            <!-- Call Requirement Badge -->
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-brand-700 mb-3">
-              <span>📞</span>
-              <span>Requires 15-Minute Strategy Call</span>
-            </div>
-
-            <div class="flex justify-between items-baseline mb-1">
-              <span id="priceLabelB" class="text-xs font-bold uppercase text-brand-600">OPTION B · 4 WEEKS</span>
-              <span id="hoursB" class="text-[11px] text-slate-400 font-mono">~48–55 ENGINEERING HRS</span>
-            </div>
-
-            <h3 class="text-xl font-bold text-slate-900">Complete Website Redesign</h3>
-
-            <div class="my-3">
-              <span id="priceValB" class="text-4xl font-extrabold text-slate-900">$1,400</span>
-              <span class="text-xs text-slate-500 font-medium">50% down, 50% upon launch</span>
-            </div>
-
-            <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-slate-700 mb-4 leading-relaxed">
-              <strong class="text-brand-800 block mb-0.5">Why a call is needed:</strong>
-              Before rebuilding your entire web presence from scratch, we do a quick 15-minute call to review your portfolio photos, branding style, and custom town page strategy.
-            </div>
-
-            <ul class="space-y-2 text-xs text-slate-700 my-4">
-              <li class="flex items-start gap-2">
-                <span class="text-brand-600 font-bold">✓</span>
-                <span><strong>Everything in Option A included</strong> (Estimate tool, stone guide, SEO)</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-brand-600 font-bold">✓</span>
-                <span><strong>Complete Ground-Up Redesign:</strong> Homepage, About (1921 story), Contact</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-brand-600 font-bold">✓</span>
-                <span><strong>Filterable 80-Photo Gallery:</strong> Kitchens, Baths, Outdoor, Fireplaces</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-brand-600 font-bold">✓</span>
-                <span><strong>South Shore Town Hubs:</strong> Clean landing pages for all 20 nearby towns</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-brand-600 font-bold">✓</span>
-                <span><strong>Professional Domain Email:</strong> Retires the generic @gmail.com address</span>
-              </li>
-            </ul>
-          </div>
-
-          <a id="btnB" href="mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20B%20($1,400)%20Schedule%2015-Min%20Call" class="w-full py-3 bg-brand-500 hover:bg-brand-600 text-white text-center text-xs font-bold rounded-lg shadow-sm transition-all mt-4">
-            Select Option B ($1,400 · Book 15-Min Call) →
-          </a>
-        </div>
-
-      </div>
-
-      <!-- Footer Help -->
-      <div class="mt-8 text-center text-xs text-slate-500">
-        Ready to get started? Reply to our email or reach us directly at <a href="mailto:sales@mander.tech" class="text-brand-600 font-bold hover:underline">sales@mander.tech</a>.
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════════
-         DOCUMENT FOOTER
-         ════════════════════════════════════════════════════════════ -->
-    <footer class="p-6 bg-slate-50 border-t border-slate-200 text-center text-xs text-slate-500">
-      <div>BOSTON BLUESTONE WEBSITE AUDIT &amp; PROPOSAL · PREPARED BY MANDER TECH</div>
-      <div class="mt-1 font-semibold text-slate-700"><a href="mailto:sales@mander.tech" class="hover:underline">SALES@MANDER.TECH</a></div>
+    <!-- FOOTER -->
+    <footer class="pt-12 pb-6 text-center font-mono text-xs font-bold uppercase">
+      <div class="brutal-border p-4 inline-block bg-brand-gray">
+        MANDER TECH // <a href="mailto:sales@mander.tech" class="hover:underline">SALES@MANDER.TECH</a>
+      </div>
     </footer>
-
   </main>
 
-  <!-- ── JAVASCRIPT: INTERACTIVE PROTOTYPES & SCHEDULE CONTROLS ── -->
   <script>
+    // Tab Logic
     function switchTab(tabId, btn) {
       document.querySelectorAll('.demo-pane').forEach(el => el.classList.add('hidden'));
       document.getElementById(tabId).classList.remove('hidden');
-
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        b.className = 'tab-btn px-4 py-2.5 rounded-lg text-xs font-bold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700';
+      
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('bg-brand-black', 'text-brand-white');
+        el.classList.add('bg-white');
       });
-      btn.className = 'tab-btn px-4 py-2.5 rounded-lg text-xs font-bold transition-all bg-brand-500 text-white shadow-sm';
+      btn.classList.remove('bg-white');
+      btn.classList.add('bg-brand-black', 'text-brand-white');
     }
 
-    function filterStones(cat, btn) {
-      document.querySelectorAll('.stone-pill').forEach(b => {
-        b.className = 'stone-pill px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-slate-700 font-medium hover:bg-slate-100';
+    // Estimator Logic
+    let currentSpace = 'Kitchen Countertops';
+    function setSimSpace(space, btn) {
+      currentSpace = space;
+      document.querySelectorAll('.sim-btn').forEach(el => {
+        el.classList.remove('bg-brand-black', 'text-white');
+        el.classList.add('bg-white');
       });
-      btn.className = 'stone-pill px-3 py-1.5 rounded-lg border border-slate-900 bg-slate-900 text-white font-bold';
-
-      document.querySelectorAll('.stone-card').forEach(c => {
-        const cats = c.dataset.cat.split(' ');
-        if (cat === 'all' || cats.includes(cat)) {
-          c.style.display = 'flex';
-        } else {
-          c.style.display = 'none';
-        }
-      });
+      btn.classList.remove('bg-white');
+      btn.classList.add('bg-brand-black', 'text-white');
+      syncSim();
     }
-
-    function setSimSpace(val, btn) {
-      btn.parentElement.querySelectorAll('.sim-btn').forEach(b => {
-        b.className = 'sim-btn py-2 px-3 rounded border border-slate-200 bg-white text-slate-700 font-medium text-center hover:bg-slate-50';
-      });
-      btn.className = 'sim-btn py-2 px-3 rounded border border-brand-500 bg-brand-50 text-brand-700 font-bold text-center';
-      document.getElementById('outSpace').textContent = val;
-    }
-
-    function syncSim() {
-      document.getElementById('outStone').textContent = document.getElementById('simStoneSelect').value;
-    }
-
+    
     function setSimLf(val) {
-      const sqft = Math.round(val * 2);
-      document.getElementById('simLfLabel').textContent = `${val} Linear Feet (~${sqft} sq.ft)`;
-      document.getElementById('outSize').textContent = `${val} LF (~${sqft} sq.ft)`;
+      document.getElementById('simLfLabel').textContent = val + ' LF';
+      syncSim();
+    }
+    
+    function syncSim() {
+      const stone = document.getElementById('simStoneSelect').value;
+      const lf = document.getElementById('simLfLabel').textContent;
+      
+      document.getElementById('outSpace').textContent = currentSpace;
+      document.getElementById('outStone').textContent = stone;
+      document.getElementById('outSize').textContent = lf + ' (~' + (parseInt(lf)*2) + ' sq.ft)';
     }
 
     function submitEstimateSim(btn) {
-      if (typeof confetti === 'function') {
-        confetti({
-          particleCount: 50,
-          spread: 60,
-          origin: { y: 0.6 }
-        });
-      }
-      const origText = btn.textContent;
-      btn.textContent = '✓ Estimate Email Simulated Successfully!';
-      btn.classList.add('bg-emerald-600', 'text-white');
-      btn.classList.remove('bg-brand-500');
+      const ogText = btn.textContent;
+      btn.textContent = "SENDING...";
       setTimeout(() => {
-        btn.textContent = origText;
-        btn.classList.remove('bg-emerald-600');
-        btn.classList.add('bg-brand-500');
-      }, 2500);
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#0A0A0A', '#FFFFFF', '#F3F4F6']
+        });
+        btn.textContent = "SENT ✓";
+        setTimeout(() => btn.textContent = ogText, 2000);
+      }, 500);
     }
 
+    // Pricing Logic
     function setSpeed(mode) {
-      const bStd = document.getElementById('schedStd');
-      const bRush = document.getElementById('schedRush');
-      const notice = document.getElementById('schedNotice');
+      const isRush = mode === 'rush';
+      
+      const btnStd = document.getElementById('schedStd');
+      const btnRush = document.getElementById('schedRush');
+      
+      if (isRush) {
+        btnRush.classList.add('bg-brand-black', 'text-white');
+        btnRush.classList.remove('bg-white');
+        btnStd.classList.add('bg-white');
+        btnStd.classList.remove('bg-brand-black', 'text-white');
+        
+        document.getElementById('priceValA').textContent = '$950';
+        document.getElementById('priceValB').textContent = '$1,750';
+        
+        document.getElementById('btnA').href = "mailto:sales@mander.tech?subject=Option A Rush ($950)";
+        document.getElementById('btnB').href = "mailto:sales@mander.tech?subject=Option B Rush ($1,750) - Call";
+        
+        document.getElementById('btnA').textContent = "SELECT OPTION A (RUSH) →";
+        document.getElementById('btnB').textContent = "SELECT OPTION B (RUSH) →";
 
-      if (mode === 'std') {
-        bStd.className = "px-3.5 py-1.5 rounded-lg text-xs font-bold border border-slate-900 bg-slate-900 text-white shadow-sm transition-all";
-        bRush.className = "px-3.5 py-1.5 rounded-lg text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 shadow-sm transition-all";
-        notice.textContent = "Standard Schedule — paced smoothly without interrupting your daily shop schedule.";
-
-        document.getElementById('priceLabelA').textContent = "OPTION A · 2 WEEKS";
-        document.getElementById('hoursA').textContent = "~22–26 ENGINEERING HRS";
-        document.getElementById('priceValA').textContent = "$750";
-        document.getElementById('btnA').textContent = "Select Option A ($750 · No Call Needed) →";
-        document.getElementById('btnA').href = "mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20A%20($750)%20No%20Call%20Needed";
-
-        document.getElementById('priceLabelB').textContent = "OPTION B · 4 WEEKS";
-        document.getElementById('hoursB').textContent = "~48–55 ENGINEERING HRS";
-        document.getElementById('priceValB').textContent = "$1,400";
-        document.getElementById('btnB').textContent = "Select Option B ($1,400 · Book 15-Min Call) →";
-        document.getElementById('btnB').href = "mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20B%20($1,400)%20Schedule%2015-Min%20Call";
+        document.getElementById('hoursA').textContent = "RUSH: NIGHTS & WEEKENDS";
+        document.getElementById('hoursB').textContent = "RUSH: NIGHTS & WEEKENDS";
       } else {
-        if (typeof confetti === 'function') {
-          confetti({
-            particleCount: 40,
-            spread: 50,
-            origin: { y: 0.7 }
-          });
-        }
-        bRush.className = "px-3.5 py-1.5 rounded-lg text-xs font-bold border border-brand-500 bg-brand-500 text-white shadow-sm transition-all";
-        bStd.className = "px-3.5 py-1.5 rounded-lg text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 shadow-sm transition-all";
-        notice.textContent = "Showing Rush Priority Schedule — compresses delivery with dedicated evening and weekend overtime engineering hours.";
-
-        document.getElementById('priceLabelA').textContent = "OPTION A · 7-DAY RUSH";
-        document.getElementById('hoursA').textContent = "~26 HRS + 10 OVERTIME HRS";
-        document.getElementById('priceValA').textContent = "$980";
-        document.getElementById('btnA').textContent = "Select Rush Option A ($980 · No Call Needed) →";
-        document.getElementById('btnA').href = "mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20A%20Rush%20($980)%20No%20Call%20Needed";
-
-        document.getElementById('priceLabelB').textContent = "OPTION B · 2-WEEK RUSH";
-        document.getElementById('hoursB').textContent = "~55 HRS + 20 OVERTIME HRS";
-        document.getElementById('priceValB').textContent = "$1,850";
-        document.getElementById('btnB').textContent = "Select Rush Option B ($1,850 · Book 15-Min Call) →";
-        document.getElementById('btnB').href = "mailto:sales@mander.tech?subject=Boston%20Bluestone%20-%20Option%20B%20Rush%20($1,850)%20Schedule%2015-Min%20Call";
+        btnStd.classList.add('bg-brand-black', 'text-white');
+        btnStd.classList.remove('bg-white');
+        btnRush.classList.add('bg-white');
+        btnRush.classList.remove('bg-brand-black', 'text-white');
+        
+        document.getElementById('priceValA').textContent = '$750';
+        document.getElementById('priceValB').textContent = '$1,400';
+        
+        document.getElementById('btnA').href = "mailto:sales@mander.tech?subject=Option A ($750)";
+        document.getElementById('btnB').href = "mailto:sales@mander.tech?subject=Option B ($1,400) - Call";
+        
+        document.getElementById('btnA').textContent = "SELECT OPTION A →";
+        document.getElementById('btnB').textContent = "SELECT OPTION B →";
+        
+        document.getElementById('hoursA').textContent = "STANDARD PACING";
+        document.getElementById('hoursB').textContent = "STANDARD PACING";
       }
     }
   </script>
